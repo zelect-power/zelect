@@ -6,3 +6,6 @@ build
 coverage
 next-env.d.ts
 package-lock.json
+# Payload auto-generated — regenerated via CLI, forbid reformat
+payload-types.ts
+app/(payload)/admin/importMap.js

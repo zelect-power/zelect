@@ -1,6 +1,21 @@
 {
   "entries": [
     {
+      "id": "20260421-194232-bd5028e",
+      "createdAt": "2026-04-21T19:42:33.427Z",
+      "description": "ICECAT-335: Users роли admin/editor с field-level access (роль защищена от editor), maxLoginAttempts=5 lockTime=10min, publicContentAccess + adminWriteEditorRead helpers",
+      "linearIds": [
+        "ICECAT-335"
+      ],
+      "git": {
+        "sha": "bd5028eeb69d525173a2c9611a7e05d6c07ec8d0",
+        "short": "bd5028e",
+        "msg": "feat(web): install Payload CMS 3 (ICECAT-333, ICECAT-326)",
+        "branch": "main"
+      },
+      "shots": []
+    },
+    {
       "id": "20260421-191651-132fdac",
       "createdAt": "2026-04-21T19:21:50.338Z",
       "description": "Payload CMS 3 установлен. /admin + /api + Postgres работают. Коллекция Users (минимум) + миграция БД (8 таблиц Payload).",
