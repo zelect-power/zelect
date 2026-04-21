@@ -24,6 +24,27 @@
 - При старте задачи — перевод в `In Progress`, при завершении — `Done`
 - Ветки Git называть как предложено Linear: `allidevelop/icecat-NNN-...` — это связывает PR с issue автоматически
 
+## 🧪 Обязательный workflow (после любого изменения кода)
+
+**Правило:** задачу в Linear нельзя переводить в `Done`, пока не выполнены:
+
+1. `npm run check` — Prettier + ESLint + TypeScript + `next build` (sanity)
+   - Быстрый вариант на итерациях: `npm run check:fast` (без билда)
+   - Prettier и ESLint ошибки **блокируют** коммит — чини сразу, не пиши обходных путей
+2. `npm run record -- "<описание>" <ICECAT-NNN>[,<ICECAT-NNN>]`
+   - Делает снимок manifest.json + Playwright-скриншоты всех страниц (prototype :3777 и next.js :3778)
+   - Light + dark темы × desktop (1440) + mobile (390) = 4 варианта на страницу
+3. Смотрим на результат: **http://144.91.95.134:3779/** (PM2 `zelect-reports`) — левый сайдбар со списком записей, preview каждой страницы, ссылки в Linear и на GitHub commit
+4. Коммит в `main`, перевод задачи в `Done`
+
+**Скрипты в корне** (`package.json`):
+- `npm run check` / `check:fast` — проверки
+- `npm run record -- "desc" ICECAT-N` — запись итерации
+- `npm run capture <record-id>` — разово снять скрины для ID
+- `npm run reports` — запустить вьюер на :3779 (уже под PM2 как `zelect-reports`)
+
+Хочется пропустить скрины (мелкое изменение без UI) — `NO_SHOTS=1 npm run record -- "desc" ICECAT-N`.
+
 ## Что это за проект
 
 Корпоративный сайт-каталог **Zelect Power Technology** (производитель силовых

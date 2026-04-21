@@ -6,7 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from 'react';
 
@@ -26,60 +26,85 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-function readStoredPreference(): ThemePreference {
+// ── External store: user preference from localStorage ──────────────────────
+
+type Listener = () => void;
+const prefListeners = new Set<Listener>();
+
+function notifyPrefListeners() {
+  for (const l of prefListeners) l();
+}
+
+function subscribePref(listener: Listener) {
+  prefListeners.add(listener);
+  if (typeof window !== 'undefined') {
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === THEME_STORAGE_KEY) notifyPrefListeners();
+    };
+    window.addEventListener('storage', onStorage);
+    return () => {
+      prefListeners.delete(listener);
+      window.removeEventListener('storage', onStorage);
+    };
+  }
+  return () => prefListeners.delete(listener);
+}
+
+function readPreferenceSnapshot(): ThemePreference {
   if (typeof window === 'undefined') return 'system';
   try {
     const raw = window.localStorage.getItem(THEME_STORAGE_KEY);
     if (raw === 'light' || raw === 'dark' || raw === 'system') return raw;
   } catch {
-    // localStorage может быть недоступен (приват-режим, CSP)
+    // localStorage недоступен (приват-режим, CSP).
   }
   return 'system';
 }
 
-function applyDataTheme(resolved: ResolvedTheme) {
-  if (typeof document === 'undefined') return;
-  document.documentElement.setAttribute('data-theme', resolved);
+const PREF_SERVER_SNAPSHOT: ThemePreference = 'system';
+
+// ── External store: prefers-color-scheme ───────────────────────────────────
+
+function subscribeSystemTheme(listener: Listener) {
+  if (typeof window === 'undefined') return () => {};
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  mq.addEventListener('change', listener);
+  return () => mq.removeEventListener('change', listener);
 }
 
+function readSystemSnapshot(): ResolvedTheme {
+  return resolveSystemTheme();
+}
+
+const SYSTEM_SERVER_SNAPSHOT: ResolvedTheme = 'light';
+
+// ── Provider ───────────────────────────────────────────────────────────────
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  // Инициализируем «по-безопасному» одинаковым значением на сервере и клиенте,
-  // чтобы не ломать гидратацию. Реальное значение подхватываем в useEffect ниже.
-  const [preference, setPreferenceState] = useState<ThemePreference>('system');
-  const [resolved, setResolved] = useState<ResolvedTheme>('light');
+  const preference = useSyncExternalStore(
+    subscribePref,
+    readPreferenceSnapshot,
+    () => PREF_SERVER_SNAPSHOT,
+  );
+  const systemTheme = useSyncExternalStore(
+    subscribeSystemTheme,
+    readSystemSnapshot,
+    () => SYSTEM_SERVER_SNAPSHOT,
+  );
+  const resolved: ResolvedTheme = preference === 'system' ? systemTheme : resolveTheme(preference);
 
-  // Первый проход — читаем localStorage и системную тему.
+  // Синхронизация data-theme с DOM после каждого рендера — external system update.
   useEffect(() => {
-    const pref = readStoredPreference();
-    const next = resolveTheme(pref);
-    setPreferenceState(pref);
-    setResolved(next);
-    applyDataTheme(next);
-  }, []);
-
-  // Слушаем изменения системной темы (актуально, когда preference === 'system').
-  useEffect(() => {
-    if (preference !== 'system' || typeof window === 'undefined') return;
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const onChange = () => {
-      const next = resolveSystemTheme();
-      setResolved(next);
-      applyDataTheme(next);
-    };
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, [preference]);
+    document.documentElement.setAttribute('data-theme', resolved);
+  }, [resolved]);
 
   const setPreference = useCallback((next: ThemePreference) => {
-    setPreferenceState(next);
-    const nextResolved = resolveTheme(next);
-    setResolved(nextResolved);
-    applyDataTheme(nextResolved);
     try {
       window.localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch {
       // ignore
     }
+    notifyPrefListeners();
   }, []);
 
   const value = useMemo<ThemeContextValue>(

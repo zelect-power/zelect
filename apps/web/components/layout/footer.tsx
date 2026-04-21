@@ -1,10 +1,7 @@
 import Link from 'next/link';
 
 import { ZPLogo } from '@/components/brand/zp-logo';
-import {
-  FOOTER_COLUMNS,
-  FOOTER_SOCIAL,
-} from '@/components/layout/nav-data';
+import { FOOTER_COLUMNS, FOOTER_SOCIAL } from '@/components/layout/nav-data';
 
 export function Footer() {
   return (
@@ -14,8 +11,8 @@ export function Footer() {
           <div className="md:col-span-1">
             <ZPLogo />
             <p className="text-muted-foreground mt-5 max-w-xs text-sm leading-relaxed">
-              Виробник силових трансформаторів та енергетичного обладнання для
-              промисловості й державного сектору України.
+              Виробник силових трансформаторів та енергетичного обладнання для промисловості й
+              державного сектору України.
             </p>
             <div className="mt-6 flex gap-2">
               {FOOTER_SOCIAL.map((s) => (

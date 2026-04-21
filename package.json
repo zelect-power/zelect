@@ -4,9 +4,17 @@
   "private": true,
   "description": "Zelect Power Technology — design prototype preview",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "reports": "node scripts/reports-server.js",
+    "check": "bash scripts/check.sh",
+    "check:fast": "bash scripts/check.sh --skip-build",
+    "record": "node scripts/record.mjs",
+    "capture": "node scripts/capture.mjs"
   },
   "dependencies": {
     "serve-handler": "^6.1.6"
+  },
+  "devDependencies": {
+    "playwright": "^1.59.1"
   }
 }

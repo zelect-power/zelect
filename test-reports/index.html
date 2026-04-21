@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zelect · Test Report</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #070a0f;
+        --surface: #0e141c;
+        --surface-2: #141c26;
+        --border: rgba(255, 255, 255, 0.08);
+        --border-strong: rgba(255, 255, 255, 0.16);
+        --text: #f3f5f7;
+        --text-sub: #a8afb8;
+        --text-dim: #6b727c;
+        --brand: #52b884;
+        --grad: linear-gradient(
+          135deg,
+          #52b884 0%,
+          #2f9f74 35%,
+          #0f7a52 70%,
+          #06563c 100%
+        );
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          'Inter Tight',
+          -apple-system,
+          system-ui,
+          sans-serif;
+        min-height: 100vh;
+      }
+      a {
+        color: inherit;
+      }
+      code,
+      .mono {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        min-height: 100vh;
+      }
+      aside {
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        padding: 24px 0;
+        overflow-y: auto;
+        position: sticky;
+        top: 0;
+        max-height: 100vh;
+      }
+      aside header {
+        padding: 0 24px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      aside header h1 {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin: 0;
+      }
+      aside header p {
+        font-size: 12px;
+        color: var(--text-sub);
+        margin: 6px 0 0;
+      }
+      .sidebar-nav {
+        padding: 12px 0;
+      }
+      .sidebar-entry {
+        width: 100%;
+        text-align: left;
+        padding: 12px 24px;
+        background: transparent;
+        border: none;
+        border-left: 2px solid transparent;
+        cursor: pointer;
+        color: var(--text-sub);
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+        display: block;
+      }
+      .sidebar-entry:hover {
+        background: var(--surface-2);
+        color: var(--text);
+      }
+      .sidebar-entry.active {
+        border-left-color: var(--brand);
+        color: var(--text);
+        background: var(--surface-2);
+      }
+      .sidebar-entry .title {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .sidebar-entry .meta {
+        font-size: 11px;
+        color: var(--text-dim);
+        margin-top: 4px;
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .sidebar-entry.active .meta {
+        color: var(--text-sub);
+      }
+
+      main {
+        padding: 32px 40px 80px;
+        max-width: 1400px;
+      }
+      .hero {
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 32px;
+      }
+      .hero .eyebrow {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+      .hero h2 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin: 12px 0 0;
+        text-wrap: balance;
+      }
+      .hero .meta {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 13px;
+        color: var(--text-sub);
+      }
+      .hero .meta a {
+        color: var(--brand);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .hero .meta a:hover {
+        text-decoration: underline;
+      }
+      .hero .commit-msg {
+        margin-top: 12px;
+        padding: 12px 14px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-size: 13px;
+        color: var(--text-sub);
+        white-space: pre-wrap;
+      }
+
+      .controls {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+      }
+      .controls label {
+        font-size: 11px;
+        color: var(--text-dim);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .pill-group {
+        display: inline-flex;
+        gap: 0;
+        padding: 4px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+      }
+      .pill-group button {
+        background: transparent;
+        border: none;
+        padding: 6px 14px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-sub);
+        border-radius: 999px;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .pill-group button.active {
+        color: #fff;
+        background: var(--grad);
+      }
+
+      .shots-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .shot-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .shot-card header {
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+      .shot-card header .label {
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .shot-card header .url {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: var(--text-dim);
+      }
+      .shot-card header .url a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+      .shot-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #fff;
+      }
+      .shot-card.missing {
+        padding: 20px;
+        color: var(--text-dim);
+        font-size: 13px;
+      }
+
+      .empty {
+        padding: 80px 20px;
+        text-align: center;
+        color: var(--text-sub);
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        aside {
+          position: static;
+          max-height: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside>
+        <header>
+          <h1>Zelect · Test Report</h1>
+          <p>История изменений + визуальный снимок каждой итерации</p>
+        </header>
+        <nav class="sidebar-nav" id="sidebar"></nav>
+      </aside>
+      <main id="main"></main>
+    </div>
+
+    <script>
+      const state = {
+        entries: [],
+        current: null,
+        theme: 'light',
+        viewport: 'desktop',
+      };
+
+      function fmtDate(iso) {
+        const d = new Date(iso);
+        return d.toLocaleString('uk-UA', {
+          dateStyle: 'short',
+          timeStyle: 'short',
+        });
+      }
+
+      function renderSidebar() {
+        const el = document.getElementById('sidebar');
+        if (!state.entries.length) {
+          el.innerHTML =
+            '<div style="padding: 20px; color: var(--text-dim); font-size: 13px;">Пока нет записей. Запусти <code>npm run record -- "описание" [ICECAT-NNN]</code> чтобы добавить.</div>';
+          return;
+        }
+        el.innerHTML = state.entries
+          .map(
+            (e) => `
+          <button class="sidebar-entry ${e.id === state.current ? 'active' : ''}" data-id="${e.id}">
+            <div class="title">${escapeHtml(e.description)}</div>
+            <div class="meta">${fmtDate(e.createdAt)} · ${e.git?.short ?? '—'}</div>
+          </button>
+        `,
+          )
+          .join('');
+        el.querySelectorAll('.sidebar-entry').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            state.current = btn.dataset.id;
+            renderSidebar();
+            renderMain();
+          });
+        });
+      }
+
+      function renderMain() {
+        const el = document.getElementById('main');
+        if (!state.entries.length) {
+          el.innerHTML = '<div class="empty">Запустите первый <code>record</code>.</div>';
+          return;
+        }
+        const entry =
+          state.entries.find((e) => e.id === state.current) ?? state.entries[0];
+        state.current = entry.id;
+
+        const linearLinks = (entry.linearIds ?? [])
+          .map(
+            (id) =>
+              `<a href="https://linear.app/kdpbot/issue/${id}" target="_blank" rel="noopener">${id}</a>`,
+          )
+          .join(' · ');
+        const ghCommit = entry.git?.sha
+          ? `<a href="https://github.com/allidevelop/zelect/commit/${entry.git.sha}" target="_blank" rel="noopener" class="mono">${entry.git.short}</a>`
+          : '—';
+        const commitMsg = entry.git?.msg
+          ? `<div class="commit-msg">${escapeHtml(entry.git.msg)}</div>`
+          : '';
+
+        const themes = ['light', 'dark'];
+        const viewports = ['desktop', 'mobile'];
+        const themeButtons = themes
+          .map(
+            (t) =>
+              `<button data-theme="${t}" class="${state.theme === t ? 'active' : ''}">${t === 'light' ? '☀ Світла' : '☾ Тёмна'}</button>`,
+          )
+          .join('');
+        const vpButtons = viewports
+          .map(
+            (v) =>
+              `<button data-viewport="${v}" class="${state.viewport === v ? 'active' : ''}">${v === 'desktop' ? 'Desktop 1440' : 'Mobile 390'}</button>`,
+          )
+          .join('');
+
+        const shots = (entry.shots ?? []).filter(
+          (s) => s.theme === state.theme && s.viewport === state.viewport,
+        );
+        const grid = shots.length
+          ? `<div class="shots-grid">${shots
+              .map((s) =>
+                s.ok
+                  ? `<div class="shot-card">
+                      <header>
+                        <div class="label">${escapeHtml(s.label)}</div>
+                        <div class="url"><a href="${s.url}" target="_blank" rel="noopener">${s.url}</a></div>
+                      </header>
+                      <a href="${s.path}" target="_blank" rel="noopener">
+                        <img loading="lazy" src="${s.path}" alt="${escapeHtml(s.label)}" />
+                      </a>
+                    </div>`
+                  : `<div class="shot-card missing">
+                      <strong>${escapeHtml(s.label)}</strong> · не удалось снять: <span class="mono">${escapeHtml(s.error ?? 'unknown')}</span>
+                    </div>`,
+              )
+              .join('')}</div>`
+          : '<div class="empty">Нет скриншотов для выбранной темы / viewport.</div>';
+
+        el.innerHTML = `
+          <div class="hero">
+            <div class="eyebrow">${entry.id}</div>
+            <h2>${escapeHtml(entry.description)}</h2>
+            <div class="meta">
+              <span>${fmtDate(entry.createdAt)}</span>
+              <span>${ghCommit}</span>
+              ${linearLinks ? `<span>${linearLinks}</span>` : ''}
+              <span class="mono">${entry.git?.branch ?? ''}</span>
+            </div>
+            ${commitMsg}
+          </div>
+          <div class="controls">
+            <div>
+              <label>Тема</label>
+              <div class="pill-group" id="theme-group">${themeButtons}</div>
+            </div>
+            <div>
+              <label>Viewport</label>
+              <div class="pill-group" id="vp-group">${vpButtons}</div>
+            </div>
+          </div>
+          ${grid}
+        `;
+
+        document
+          .querySelectorAll('#theme-group button')
+          .forEach((b) =>
+            b.addEventListener('click', () => {
+              state.theme = b.dataset.theme;
+              renderMain();
+            }),
+          );
+        document
+          .querySelectorAll('#vp-group button')
+          .forEach((b) =>
+            b.addEventListener('click', () => {
+              state.viewport = b.dataset.viewport;
+              renderMain();
+            }),
+          );
+      }
+
+      function escapeHtml(s) {
+        return String(s ?? '').replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              '"': '&quot;',
+              "'": '&#39;',
+            })[c],
+        );
+      }
+
+      fetch('manifest.json?v=' + Date.now())
+        .then((r) => (r.ok ? r.json() : { entries: [] }))
+        .then((m) => {
+          state.entries = m.entries ?? [];
+          state.current = state.entries[0]?.id ?? null;
+          renderSidebar();
+          renderMain();
+        })
+        .catch(() => {
+          state.entries = [];
+          renderSidebar();
+          renderMain();
+        });
+    </script>
+  </body>
+</html>

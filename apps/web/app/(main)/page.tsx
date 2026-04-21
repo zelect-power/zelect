@@ -22,9 +22,9 @@ export default function Home() {
         </h1>
         <p className="text-muted-foreground mt-6 max-w-xl text-lg">
           Фундамент перенесений — шрифти (Inter&nbsp;Tight, Science&nbsp;Gothic,
-          JetBrains&nbsp;Mono), палітра (brand emerald, ink), семантичні токени
-          світлої та тёмної теми. Наступні завдання — переключатель теми
-          (ICECAT-321) і глобальний layout (ICECAT-323).
+          JetBrains&nbsp;Mono), палітра (brand emerald, ink), семантичні токени світлої та тёмної
+          теми. Наступні завдання — переключатель теми (ICECAT-321) і глобальний layout
+          (ICECAT-323).
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <a
@@ -46,28 +46,16 @@ export default function Home() {
         </div>
         <dl className="border-border-theme mt-14 grid max-w-xl grid-cols-3 gap-6 border-t pt-8">
           <div>
-            <dt className="text-faint-foreground text-xs tracking-widest uppercase">
-              Тема
-            </dt>
-            <dd className="text-foreground mt-1 font-mono text-sm">
-              data-theme
-            </dd>
+            <dt className="text-faint-foreground text-xs tracking-widest uppercase">Тема</dt>
+            <dd className="text-foreground mt-1 font-mono text-sm">data-theme</dd>
           </div>
           <div>
-            <dt className="text-faint-foreground text-xs tracking-widest uppercase">
-              Палітра
-            </dt>
-            <dd className="text-foreground mt-1 font-mono text-sm">
-              brand-300..700
-            </dd>
+            <dt className="text-faint-foreground text-xs tracking-widest uppercase">Палітра</dt>
+            <dd className="text-foreground mt-1 font-mono text-sm">brand-300..700</dd>
           </div>
           <div>
-            <dt className="text-faint-foreground text-xs tracking-widest uppercase">
-              Шрифти
-            </dt>
-            <dd className="text-foreground mt-1 font-mono text-sm">
-              next/font
-            </dd>
+            <dt className="text-faint-foreground text-xs tracking-widest uppercase">Шрифти</dt>
+            <dd className="text-foreground mt-1 font-mono text-sm">next/font</dd>
           </div>
         </dl>
       </div>

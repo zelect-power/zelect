@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { ZPLogo } from '@/components/brand/zp-logo';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -65,9 +65,7 @@ function NavLink({
       onClick={onClick}
       className={
         'group relative inline-flex items-center py-5 text-sm font-medium transition-colors ' +
-        (active
-          ? 'text-foreground'
-          : 'text-muted-foreground hover:text-foreground')
+        (active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground')
       }
     >
       {label}
@@ -95,10 +93,9 @@ export function Topbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Закрыть мобильное меню при смене маршрута (client navigation).
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
+  // Закрытие мобильного меню при переходе по ссылке — через onClick handler,
+  // без useEffect+setState на изменение pathname (anti-pattern в React 19).
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   const isActive = (href: string) =>
     href === ROUTES.home ? pathname === href : pathname.startsWith(href);
@@ -123,6 +120,7 @@ export function Topbar() {
               label={item.label}
               href={item.href}
               active={isActive(item.href)}
+              onClick={closeMobile}
             />
           ))}
         </nav>
@@ -175,11 +173,7 @@ export function Topbar() {
             ))}
           </nav>
           <div className="mt-10">
-            <CtaButton
-              href={ROUTES.contacts}
-              size="lg"
-              onClick={() => setMobileOpen(false)}
-            >
+            <CtaButton href={ROUTES.contacts} size="lg" onClick={() => setMobileOpen(false)}>
               {NAV_CTA_LABEL}
             </CtaButton>
           </div>

@@ -23,14 +23,14 @@ npm start                          # http://0.0.0.0:3777 (прод)
 
 ## Скрипты
 
-| Скрипт | Что делает |
-|---|---|
-| `npm run dev` | Dev server на :3001 (пока прототип живёт на :3777) |
-| `npm run build` | Production build |
-| `npm start` | Production-сервер на :3777 (после переключения с прототипа) |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier (форматирование) |
-| `npm run format:check` | Prettier (только проверка) |
+| Скрипт                 | Что делает                                                  |
+| ---------------------- | ----------------------------------------------------------- |
+| `npm run dev`          | Dev server на :3001 (пока прототип живёт на :3777)          |
+| `npm run build`        | Production build                                            |
+| `npm start`            | Production-сервер на :3777 (после переключения с прототипа) |
+| `npm run lint`         | ESLint                                                      |
+| `npm run format`       | Prettier (форматирование)                                   |
+| `npm run format:check` | Prettier (только проверка)                                  |
 
 ## Структура (App Router)
 

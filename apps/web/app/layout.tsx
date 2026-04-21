@@ -71,7 +71,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="flex min-h-full flex-col bg-background text-foreground antialiased">
+      <body className="bg-background text-foreground flex min-h-full flex-col antialiased">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

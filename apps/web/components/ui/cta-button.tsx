@@ -22,8 +22,7 @@ const sizeClass: Record<Size, string> = {
 const variantClass: Record<Variant, string> = {
   primary:
     'text-white shadow-[0_6px_16px_rgb(15_122_82/0.22)] hover:shadow-[0_12px_30px_rgb(15_122_82/0.35)]',
-  ghost:
-    'border border-border-strong text-foreground hover:bg-background-soft',
+  ghost: 'border border-border-strong text-foreground hover:bg-background-soft',
   solid: 'bg-foreground text-background',
 };
 
@@ -38,10 +37,7 @@ export function CtaButton({
 }: AnchorProps) {
   const base =
     'inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-transform hover:-translate-y-px';
-  const style =
-    variant === 'primary'
-      ? { background: 'var(--gradient-brand)' }
-      : undefined;
+  const style = variant === 'primary' ? { background: 'var(--gradient-brand)' } : undefined;
 
   return (
     <Link
