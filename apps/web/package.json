@@ -2,6 +2,7 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --port 3778 --hostname 0.0.0.0",
     "build": "next build",
@@ -11,7 +12,12 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "^3.83.0",
+    "@payloadcms/next": "^3.83.0",
+    "@payloadcms/richtext-lexical": "^3.83.0",
+    "graphql": "^16.13.2",
     "next": "16.2.4",
+    "payload": "^3.83.0",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },

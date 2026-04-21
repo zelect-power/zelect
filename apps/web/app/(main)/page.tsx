@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <section className="flex flex-1 items-center justify-center px-8 py-24">
@@ -27,7 +29,7 @@ export default function Home() {
           (ICECAT-323).
         </p>
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <a
+          <Link
             href="/admin"
             className="inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-semibold text-white transition-transform hover:-translate-y-px"
             style={{
@@ -35,8 +37,8 @@ export default function Home() {
               boxShadow: '0 6px 16px rgb(15 122 82 / 0.22)',
             }}
           >
-            Placeholder admin →
-          </a>
+            Payload Admin →
+          </Link>
           <a
             href="http://144.91.95.134:3777/"
             className="border-border-strong hover:bg-background-soft text-foreground inline-flex h-12 items-center gap-2 rounded-full border px-6 text-sm font-semibold transition-colors"

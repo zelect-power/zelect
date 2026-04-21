@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "reports": "node scripts/reports-server.js",
-    "check": "bash scripts/check.sh",
-    "check:fast": "bash scripts/check.sh --skip-build",
+    "check": "bash scripts/check.sh --skip-build",
+    "check:full": "bash scripts/check.sh",
     "record": "node scripts/record.mjs",
     "capture": "node scripts/capture.mjs"
   },

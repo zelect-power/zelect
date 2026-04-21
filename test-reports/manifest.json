@@ -1,6 +1,276 @@
 {
   "entries": [
     {
+      "id": "20260421-191651-132fdac",
+      "createdAt": "2026-04-21T19:21:50.338Z",
+      "description": "Payload CMS 3 установлен. /admin + /api + Postgres работают. Коллекция Users (минимум) + миграция БД (8 таблиц Payload).",
+      "linearIds": [
+        "ICECAT-333",
+        "ICECAT-326"
+      ],
+      "git": {
+        "sha": "132fdac9f7d42c27e8c1c84c5fe4a5374e6266f0",
+        "short": "132fdac",
+        "msg": "feat(infra): automated checks + visual test-report (ICECAT-366)",
+        "branch": "main"
+      },
+      "shots": [
+        {
+          "target": "next-home",
+          "label": "Next · Головна",
+          "url": "http://127.0.0.1:3778/",
+          "theme": "light",
+          "viewport": "desktop",
+          "path": null,
+          "ok": false,
+          "error": "page.goto: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3778/\", waiting until \"networkidle\"\u001b[22m\n"
+        },
+        {
+          "target": "proto-home",
+          "label": "Прототип · Головна",
+          "url": "http://127.0.0.1:3777/",
+          "theme": "light",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-home-light-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-products",
+          "label": "Прототип · Продукти",
+          "url": "http://127.0.0.1:3777/produkty",
+          "theme": "light",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-products-light-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-services",
+          "label": "Прототип · Послуги",
+          "url": "http://127.0.0.1:3777/poslugy",
+          "theme": "light",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-services-light-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-support",
+          "label": "Прототип · Підтримка",
+          "url": "http://127.0.0.1:3777/pidtrymka",
+          "theme": "light",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-support-light-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-news",
+          "label": "Прототип · Новини",
+          "url": "http://127.0.0.1:3777/novyny",
+          "theme": "light",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-news-light-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-contacts",
+          "label": "Прототип · Контакти",
+          "url": "http://127.0.0.1:3777/kontakty",
+          "theme": "light",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-contacts-light-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "next-home",
+          "label": "Next · Головна",
+          "url": "http://127.0.0.1:3778/",
+          "theme": "dark",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/next-home-dark-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-home",
+          "label": "Прототип · Головна",
+          "url": "http://127.0.0.1:3777/",
+          "theme": "dark",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-home-dark-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-products",
+          "label": "Прототип · Продукти",
+          "url": "http://127.0.0.1:3777/produkty",
+          "theme": "dark",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-products-dark-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-services",
+          "label": "Прототип · Послуги",
+          "url": "http://127.0.0.1:3777/poslugy",
+          "theme": "dark",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-services-dark-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-support",
+          "label": "Прототип · Підтримка",
+          "url": "http://127.0.0.1:3777/pidtrymka",
+          "theme": "dark",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-support-dark-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-news",
+          "label": "Прототип · Новини",
+          "url": "http://127.0.0.1:3777/novyny",
+          "theme": "dark",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-news-dark-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "proto-contacts",
+          "label": "Прототип · Контакти",
+          "url": "http://127.0.0.1:3777/kontakty",
+          "theme": "dark",
+          "viewport": "desktop",
+          "path": "screenshots/20260421-191651-132fdac/proto-contacts-dark-desktop.png",
+          "ok": true
+        },
+        {
+          "target": "next-home",
+          "label": "Next · Головна",
+          "url": "http://127.0.0.1:3778/",
+          "theme": "light",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/next-home-light-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-home",
+          "label": "Прототип · Головна",
+          "url": "http://127.0.0.1:3777/",
+          "theme": "light",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-home-light-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-products",
+          "label": "Прототип · Продукти",
+          "url": "http://127.0.0.1:3777/produkty",
+          "theme": "light",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-products-light-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-services",
+          "label": "Прототип · Послуги",
+          "url": "http://127.0.0.1:3777/poslugy",
+          "theme": "light",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-services-light-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-support",
+          "label": "Прототип · Підтримка",
+          "url": "http://127.0.0.1:3777/pidtrymka",
+          "theme": "light",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-support-light-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-news",
+          "label": "Прототип · Новини",
+          "url": "http://127.0.0.1:3777/novyny",
+          "theme": "light",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-news-light-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-contacts",
+          "label": "Прототип · Контакти",
+          "url": "http://127.0.0.1:3777/kontakty",
+          "theme": "light",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-contacts-light-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "next-home",
+          "label": "Next · Головна",
+          "url": "http://127.0.0.1:3778/",
+          "theme": "dark",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/next-home-dark-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-home",
+          "label": "Прототип · Головна",
+          "url": "http://127.0.0.1:3777/",
+          "theme": "dark",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-home-dark-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-products",
+          "label": "Прототип · Продукти",
+          "url": "http://127.0.0.1:3777/produkty",
+          "theme": "dark",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-products-dark-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-services",
+          "label": "Прототип · Послуги",
+          "url": "http://127.0.0.1:3777/poslugy",
+          "theme": "dark",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-services-dark-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-support",
+          "label": "Прототип · Підтримка",
+          "url": "http://127.0.0.1:3777/pidtrymka",
+          "theme": "dark",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-support-dark-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-news",
+          "label": "Прототип · Новини",
+          "url": "http://127.0.0.1:3777/novyny",
+          "theme": "dark",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-news-dark-mobile.png",
+          "ok": true
+        },
+        {
+          "target": "proto-contacts",
+          "label": "Прототип · Контакти",
+          "url": "http://127.0.0.1:3777/kontakty",
+          "theme": "dark",
+          "viewport": "mobile",
+          "path": "screenshots/20260421-191651-132fdac/proto-contacts-dark-mobile.png",
+          "ok": true
+        }
+      ]
+    },
+    {
       "id": "20260421-182215-97420a8",
       "createdAt": "2026-04-21T18:25:52.259Z",
       "description": "Инфра: автопроверки (check.sh) + Playwright скриншоты + HTML-вьюер test-report на :3779. Фикс React 19 anti-patterns (setState-in-effect) в ThemeProvider и Topbar.",

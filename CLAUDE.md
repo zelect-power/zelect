@@ -28,14 +28,20 @@
 
 **Правило:** задачу в Linear нельзя переводить в `Done`, пока не выполнены:
 
-1. `npm run check` — Prettier + ESLint + TypeScript + `next build` (sanity)
-   - Быстрый вариант на итерациях: `npm run check:fast` (без билда)
+1. `npm run check` — Prettier + ESLint + TypeScript (**без** `next build` — быстро, 3–10 сек)
+   - Полная версия с прод-билдом: `npm run check:full` (раз в этап / перед крупным merge)
    - Prettier и ESLint ошибки **блокируют** коммит — чини сразу, не пиши обходных путей
 2. `npm run record -- "<описание>" <ICECAT-NNN>[,<ICECAT-NNN>]`
    - Делает снимок manifest.json + Playwright-скриншоты всех страниц (prototype :3777 и next.js :3778)
    - Light + dark темы × desktop (1440) + mobile (390) = 4 варианта на страницу
+   - Если правка чисто под капотом / без визуала — `NO_SHOTS=1 npm run record -- "desc" ICECAT-N`
 3. Смотрим на результат: **http://144.91.95.134:3779/** (PM2 `zelect-reports`) — левый сайдбар со списком записей, preview каждой страницы, ссылки в Linear и на GitHub commit
 4. Коммит в `main`, перевод задачи в `Done`
+
+**Полный `npm run check:full` (с прод-билдом ~3 мин) запускаем:**
+- перед закрытием крупного этапа TZ
+- после изменений в `payload.config.ts` / коллекциях (ловит SSR mismatch в админке)
+- перед переключением прод-слота с прототипа на Next.js (ICECAT-363)
 
 **Скрипты в корне** (`package.json`):
 - `npm run check` / `check:fast` — проверки
