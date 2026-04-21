@@ -1,0 +1,12 @@
+{
+  "name": "zelect-power-site",
+  "version": "0.1.0-preview",
+  "private": true,
+  "description": "Zelect Power Technology — design prototype preview",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "serve-handler": "^6.1.6"
+  }
+}

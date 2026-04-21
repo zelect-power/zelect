@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Zelect Power Technology — енергетичне обладнання</title>
+<template id="__bundler_thumbnail" data-bg-color="#ffffff">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="zpsplash" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#52b884"/>
+        <stop offset="0.5" stop-color="#0f7a52"/>
+        <stop offset="1" stop-color="#06563c"/>
+      </linearGradient>
+    </defs>
+    <g transform="translate(420 260)">
+      <path d="M8 10 L298 10 L352 60 L352 110 L120 110 L220 170 L352 170 L352 220 L298 220 L298 290 L8 290 L-42 240 L-42 190 L230 190 L130 130 L8 130 Z"
+            fill="url(#zpsplash)"/>
+    </g>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter Tight', -apple-system, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: #52b884; color: #fff; }
+  button { font: inherit; }
+
+  @keyframes zp-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes zp-ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes zp-page-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes zp-hero-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes zp-hero-visual-in {
+    from { opacity: 0; transform: scale(.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .zp-hero-grid { grid-template-columns: 1fr !important; }
+    .zp-hero-visual { display: none !important; }
+    .zp-product-grid, .zp-news-grid, .zp-cases-grid, .zp-sup-grid, .zp-svc-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .zp-services-grid, .zp-why-grid, .zp-certs-grid, .zp-faq-grid, .zp-contact-grid, .zp-support-card { grid-template-columns: 1fr !important; }
+    .zp-footer-grid { grid-template-columns: 1fr 1fr !important; }
+    .zp-stats-grid { grid-template-columns: repeat(2, 1fr) !important; row-gap: 40px !important; }
+    .zp-sec-head { flex-direction: column !important; align-items: flex-start !important; }
+  }
+  @media (max-width: 720px) {
+    .zp-nav-desktop { display: none !important; }
+    .zp-nav-mobile { display: inline-flex !important; }
+    .zp-product-grid, .zp-news-grid, .zp-cases-grid, .zp-sup-grid, .zp-svc-grid { grid-template-columns: 1fr !important; }
+    .zp-footer-grid { grid-template-columns: 1fr !important; }
+    .zp-stats-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="src/tokens.jsx"></script>
+<script type="text/babel" src="src/icons.jsx"></script>
+<script type="text/babel" src="src/ui.jsx"></script>
+<script type="text/babel" src="src/nav.jsx"></script>
+<script type="text/babel" src="src/home.jsx"></script>
+<script type="text/babel" src="src/pages.jsx"></script>
+<script type="text/babel" src="src/app.jsx"></script>
+</body>
+</html>
