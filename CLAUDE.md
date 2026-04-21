@@ -14,6 +14,16 @@
 Репозиторий: **https://github.com/allidevelop/zelect**
 Все значимые итерации коммитим и пушим в `main`.
 
+## 📋 Linear
+
+Задачи проекта: **https://linear.app/kdpbot/project/zelect-1c3bca96288e/overview**
+
+- Team: `ICECAT`
+- 5 milestones по этапам из `TZ.md` §8
+- Задачи на начало работы (ICECAT-320 … ICECAT-364) — детальные описания со ссылками на файлы прототипа и поля коллекций Payload
+- При старте задачи — перевод в `In Progress`, при завершении — `Done`
+- Ветки Git называть как предложено Linear: `allidevelop/icecat-NNN-...` — это связывает PR с issue автоматически
+
 ## Что это за проект
 
 Корпоративный сайт-каталог **Zelect Power Technology** (производитель силовых

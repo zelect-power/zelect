@@ -1,5 +1,11 @@
 # TODO — Zelect
 
+> **Канонический трекер задач — Linear:**
+> https://linear.app/kdpbot/project/zelect-1c3bca96288e/overview
+>
+> Этот файл — краткая синхронная копия для быстрого обзора. Статусы и детали
+> смотреть в Linear (team ICECAT, issues ICECAT-320 … ICECAT-364).
+
 Статусы: ⬜ todo · 🟡 in-progress · ✅ done · ❌ cancelled · 🔴 blocked
 
 ## Этап 0: Превью дизайн-прототипа (pre-stage)
