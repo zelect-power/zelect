@@ -90,13 +90,25 @@ async function main() {
         const filePath = resolve(outDir, fileName);
         try {
           // /admin первая компиляция в dev — до 2 минут. Прочие страницы ≤10 с.
-          const timeout = target.key.startsWith('next-admin') ? 120000 : 30000;
+          const isAdmin = target.key.startsWith('next-admin');
+          const timeout = isAdmin ? 120000 : 30000;
           await page.goto(target.url, {
             waitUntil: 'networkidle',
             timeout,
           });
-          // Wait a bit for fonts + animations to settle.
-          await page.waitForTimeout(500);
+          if (isAdmin) {
+            // Payload dev-режим делает client-side редирект на
+            // /admin/login или /admin/create-first-user после гидратации.
+            // Ждём пока форма или хедер админки появятся, иначе снимем пустой RSC-шелл.
+            await page
+              .waitForSelector('form, h1, .template-default, .template-minimal', {
+                timeout: 60000,
+              })
+              .catch(() => {});
+            await page.waitForTimeout(1500);
+          } else {
+            await page.waitForTimeout(500);
+          }
           await page.screenshot({
             path: filePath,
             fullPage: true,
