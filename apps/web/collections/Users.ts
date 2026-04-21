@@ -9,8 +9,15 @@ import { isAdmin, isAdminFieldLevel, isAdminOrSelf } from '@/access/roles';
 export const Users: CollectionConfig = {
   slug: 'users',
   auth: {
+    // ICECAT-332 — защита админки:
     maxLoginAttempts: 5,
-    lockTime: 10 * 60 * 1000, // 10 минут, см. ICECAT-332
+    lockTime: 10 * 60 * 1000, // 10 минут lock после 5 неудач
+    tokenExpiration: 60 * 60 * 8, // 8 часов сессия
+    cookies: {
+      // secure ставим только в production (http на 3778 в dev).
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Lax',
+    },
   },
   admin: {
     useAsTitle: 'email',
@@ -28,6 +35,28 @@ export const Users: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: false,
+    },
+    // ICECAT-332: политика пароля (минимум 12 символов, буквы+цифры).
+    // Применяется при регистрации / смене пароля — Payload vaлидирует
+    // `password` поле при its presence in data.
+    {
+      name: 'password',
+      type: 'text',
+      admin: { hidden: true },
+      hooks: {
+        beforeValidate: [
+          ({ value }) => {
+            if (typeof value !== 'string' || value.length === 0) return value;
+            if (value.length < 12) {
+              throw new Error('Пароль має містити не менше 12 символів.');
+            }
+            if (!/[a-zA-Z]/.test(value) || !/[0-9]/.test(value)) {
+              throw new Error('Пароль повинен містити літери та цифри.');
+            }
+            return value;
+          },
+        ],
+      },
     },
     {
       name: 'role',

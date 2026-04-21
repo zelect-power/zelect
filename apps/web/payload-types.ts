@@ -68,6 +68,13 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
+    categories: Category;
+    products: Product;
+    services: Service;
+    news: News;
+    pages: Page;
+    media: Media;
+    submissions: Submission;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -76,6 +83,13 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    news: NewsSelect<false> | NewsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    submissions: SubmissionsSelect<false> | SubmissionsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -84,10 +98,19 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
-  locale: null;
+  fallbackLocale:
+    | ('false' | 'none' | 'null')
+    | false
+    | null
+    | ('uk' | 'ru' | 'en' | 'pl')
+    | ('uk' | 'ru' | 'en' | 'pl')[];
+  globals: {
+    settings: Setting;
+  };
+  globalsSelect: {
+    settings: SettingsSelect<false> | SettingsSelect<true>;
+  };
+  locale: 'uk' | 'ru' | 'en' | 'pl';
   widgets: {
     collections: CollectionsWidget;
   };
@@ -122,6 +145,7 @@ export interface UserAuthOperations {
 export interface User {
   id: number;
   name?: string | null;
+  password?: string | null;
   role: 'admin' | 'editor';
   updatedAt: string;
   createdAt: string;
@@ -139,8 +163,382 @@ export interface User {
         expiresAt: string;
       }[]
     | null;
-  password?: string | null;
   collection: 'users';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  title: string;
+  /**
+   * URL-ідентифікатор. Автоматично генерується з назви; можна змінити.
+   */
+  slug: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Батьківська категорія (не більше 2 рівнів).
+   */
+  parent?: (number | null) | Category;
+  /**
+   * Чим менше число, тим вище у списку.
+   */
+  order?: number | null;
+  image?: (number | null) | Media;
+  /**
+   * Мета-дані для пошукових систем і соцмереж. Порожні поля — fallback на title/description сутності.
+   */
+  seo?: {
+    /**
+     * Рекомендовано ≤60 символів.
+     */
+    title?: string | null;
+    /**
+     * Рекомендовано ≤160 символів.
+     */
+    description?: string | null;
+    /**
+     * OpenGraph preview, 1200×630.
+     */
+    ogImage?: (number | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  /**
+   * Обов'язково для accessibility і SEO.
+   */
+  alt: string;
+  caption?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    hero?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    og?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: number;
+  title: string;
+  /**
+   * Артикул (SKU), унікальний.
+   */
+  article: string;
+  /**
+   * URL-ідентифікатор. Автоматично генерується з назви; можна змінити.
+   */
+  slug: string;
+  category: number | Category;
+  gallery?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  specs?:
+    | {
+        label: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  documents?:
+    | {
+        file: number | Media;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Показувати на головній як ключовий.
+   */
+  featured?: boolean | null;
+  /**
+   * Мета-дані для пошукових систем і соцмереж. Порожні поля — fallback на title/description сутності.
+   */
+  seo?: {
+    /**
+     * Рекомендовано ≤60 символів.
+     */
+    title?: string | null;
+    /**
+     * Рекомендовано ≤160 символів.
+     */
+    description?: string | null;
+    /**
+     * OpenGraph preview, 1200×630.
+     */
+    ogImage?: (number | null) | Media;
+  };
+  price?: number | null;
+  currency?: ('UAH' | 'USD' | 'EUR') | null;
+  stock?: ('in_stock' | 'to_order' | 'out_of_stock') | null;
+  minOrderQty?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  title: string;
+  /**
+   * URL-ідентифікатор. Автоматично генерується з назви; можна змінити.
+   */
+  slug: string;
+  icon: 'doc' | 'factory' | 'build' | 'spark' | 'wrench' | 'cog' | 'shield' | 'clock';
+  summary?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  bullets?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  order?: number | null;
+  image?: (number | null) | Media;
+  /**
+   * Мета-дані для пошукових систем і соцмереж. Порожні поля — fallback на title/description сутності.
+   */
+  seo?: {
+    /**
+     * Рекомендовано ≤60 символів.
+     */
+    title?: string | null;
+    /**
+     * Рекомендовано ≤160 символів.
+     */
+    description?: string | null;
+    /**
+     * OpenGraph preview, 1200×630.
+     */
+    ogImage?: (number | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: number;
+  title: string;
+  /**
+   * URL-ідентифікатор. Автоматично генерується з назви; можна змінити.
+   */
+  slug: string;
+  category: 'projects' | 'company' | 'quality' | 'partnership' | 'industry';
+  publishedAt: string;
+  excerpt?: string | null;
+  body: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  coverImage?: (number | null) | Media;
+  author?: (number | null) | User;
+  status: 'draft' | 'published';
+  /**
+   * Мета-дані для пошукових систем і соцмереж. Порожні поля — fallback на title/description сутності.
+   */
+  seo?: {
+    /**
+     * Рекомендовано ≤60 символів.
+     */
+    title?: string | null;
+    /**
+     * Рекомендовано ≤160 символів.
+     */
+    description?: string | null;
+    /**
+     * OpenGraph preview, 1200×630.
+     */
+    ogImage?: (number | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  /**
+   * URL-ідентифікатор. Автоматично генерується з назви; можна змінити.
+   */
+  slug: string;
+  body: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  status: 'draft' | 'published';
+  /**
+   * Мета-дані для пошукових систем і соцмереж. Порожні поля — fallback на title/description сутності.
+   */
+  seo?: {
+    /**
+     * Рекомендовано ≤60 символів.
+     */
+    title?: string | null;
+    /**
+     * Рекомендовано ≤160 символів.
+     */
+    description?: string | null;
+    /**
+     * OpenGraph preview, 1200×630.
+     */
+    ogImage?: (number | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "submissions".
+ */
+export interface Submission {
+  id: number;
+  subject?: string | null;
+  type: 'quote' | 'contact' | 'product_inquiry';
+  fullName: string;
+  company?: string | null;
+  phone?: string | null;
+  email: string;
+  message?: string | null;
+  /**
+   * Заповнюється автоматично, якщо заявка з картки товару.
+   */
+  productRef?: (number | null) | Product;
+  /**
+   * URL сторінки, з якої відправлено.
+   */
+  source?: string | null;
+  /**
+   * sha256 від IP — використовується для rate-limit.
+   */
+  ipHash?: string | null;
+  status: 'new' | 'contacted' | 'closed';
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -165,10 +563,39 @@ export interface PayloadKv {
  */
 export interface PayloadLockedDocument {
   id: number;
-  document?: {
-    relationTo: 'users';
-    value: number | User;
-  } | null;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'categories';
+        value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'products';
+        value: number | Product;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'news';
+        value: number | News;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'submissions';
+        value: number | Submission;
+      } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
@@ -217,6 +644,7 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  password?: T;
   role?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -234,6 +662,225 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  parent?: T;
+  order?: T;
+  image?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products_select".
+ */
+export interface ProductsSelect<T extends boolean = true> {
+  title?: T;
+  article?: T;
+  slug?: T;
+  category?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  description?: T;
+  specs?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        id?: T;
+      };
+  documents?:
+    | T
+    | {
+        file?: T;
+        label?: T;
+        id?: T;
+      };
+  featured?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+      };
+  price?: T;
+  currency?: T;
+  stock?: T;
+  minOrderQty?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  icon?: T;
+  summary?: T;
+  description?: T;
+  bullets?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  order?: T;
+  image?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news_select".
+ */
+export interface NewsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  category?: T;
+  publishedAt?: T;
+  excerpt?: T;
+  body?: T;
+  coverImage?: T;
+  author?: T;
+  status?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  body?: T;
+  status?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  caption?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        hero?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        og?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "submissions_select".
+ */
+export interface SubmissionsSelect<T extends boolean = true> {
+  subject?: T;
+  type?: T;
+  fullName?: T;
+  company?: T;
+  phone?: T;
+  email?: T;
+  message?: T;
+  productRef?: T;
+  source?: T;
+  ipHash?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -274,6 +921,101 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings".
+ */
+export interface Setting {
+  id: number;
+  companyName: string;
+  /**
+   * Повна юридична назва
+   */
+  legalName?: string | null;
+  /**
+   * ЄДРПОУ / IBAN / ПДВ-код
+   */
+  vatNumber?: string | null;
+  /**
+   * Гаряча лінія 24/7 — показується у футері та на /pidtrymka.
+   */
+  hotline?: string | null;
+  contacts?: {
+    phone?: string | null;
+    email?: string | null;
+    emailTender?: string | null;
+    emailService?: string | null;
+    address?: string | null;
+  };
+  offices?:
+    | {
+        city: string;
+        role: string;
+        address: string;
+        phone?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  social?: {
+    linkedin?: string | null;
+    facebook?: string | null;
+    youtube?: string | null;
+    telegram?: string | null;
+  };
+  defaultSeo?: {
+    title?: string | null;
+    description?: string | null;
+    ogImage?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings_select".
+ */
+export interface SettingsSelect<T extends boolean = true> {
+  companyName?: T;
+  legalName?: T;
+  vatNumber?: T;
+  hotline?: T;
+  contacts?:
+    | T
+    | {
+        phone?: T;
+        email?: T;
+        emailTender?: T;
+        emailService?: T;
+        address?: T;
+      };
+  offices?:
+    | T
+    | {
+        city?: T;
+        role?: T;
+        address?: T;
+        phone?: T;
+        id?: T;
+      };
+  social?:
+    | T
+    | {
+        linkedin?: T;
+        facebook?: T;
+        youtube?: T;
+        telegram?: T;
+      };
+  defaultSeo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ogImage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
