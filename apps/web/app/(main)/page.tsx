@@ -1,20 +1,15 @@
-import { ThemeToggle } from '@/components/theme-toggle';
-
 export default function Home() {
   return (
-    <main className="flex flex-1 items-center justify-center px-8 py-24">
+    <section className="flex flex-1 items-center justify-center px-8 py-24">
       <div className="w-full max-w-3xl">
-        <div className="mb-6 flex items-center justify-between gap-4">
-          <span className="text-faint-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
-            <span
-              aria-hidden
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ background: 'var(--gradient-brand)' }}
-            />
-            Next.js 16 · Tailwind 4 · дизайн-токени Zelect
-          </span>
-          <ThemeToggle />
-        </div>
+        <span className="text-faint-foreground mb-6 inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase">
+          <span
+            aria-hidden
+            className="h-1.5 w-1.5 rounded-full"
+            style={{ background: 'var(--gradient-brand)' }}
+          />
+          Next.js 16 · Tailwind 4 · дизайн-токени Zelect
+        </span>
         <h1 className="text-foreground text-5xl leading-none font-bold tracking-tight md:text-7xl">
           Енергія, що{' '}
           <span
@@ -76,6 +71,6 @@ export default function Home() {
           </div>
         </dl>
       </div>
-    </main>
+    </section>
   );
 }

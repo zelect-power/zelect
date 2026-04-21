@@ -2,11 +2,12 @@
 
 ## Текущий статус
 
-- **Этап:** Pre-stage завершён → переход к Этапу 1
-- **Прогресс Этапа 1:** 0% (в работе ICECAT-320 — Next.js scaffold)
-- **Следующий шаг:** Начать инициализацию Next.js 15 (App Router + TS +
-  Tailwind) в `apps/web/` с прицелом на интеграцию Payload CMS 3
-  (ICECAT-320 → ICECAT-325).
+- **Этап:** Этап 1 — Подготовка завершён → переход к Этапу 2
+- **Прогресс Этапа 1:** 100% (6/6 задач закрыто)
+- **Следующий шаг:** Этап 2 — установить Payload CMS 3 (ICECAT-333),
+  подключить созданную БД `zelect_prod` (ICECAT-326), реализовать
+  9 коллекций по схеме ADR-005 (ICECAT-335, 327, 328, 334, 336, 337, 329,
+  330, 331), защита админки (ICECAT-332).
 
 ## Сделано
 
@@ -33,6 +34,27 @@
 - [2026-04-21] Создан локальный PostgreSQL: пользователь `zelect`, БД
   `zelect_prod` на 127.0.0.1:5432. DSN лежит в `.env.local` (gitignored),
   плейсхолдер — в `.env.example`. Решение — ADR-002.
+- [2026-04-21] **Этап 1 — Подготовка**: закрыты все 6 задач.
+  - ICECAT-320 — Next.js 16.2.4 + React 19 + TS strict + Tailwind 4 в
+    `apps/web/`, Prettier, Turbopack (`turbopack.root` зафиксирован).
+  - ICECAT-322 — дизайн-токены Zelect (emerald/ink, градиент, шрифты,
+    радиусы, шадоу) перенесены в `globals.css` (@theme + @custom-variant dark)
+    + семантические CSS vars для переключения light/dark.
+  - ICECAT-321 — `ThemeProvider` + `ThemeToggle` (light/dark/system),
+    anti-FOUC inline-скрипт в `<head>` читает localStorage +
+    prefers-color-scheme ДО гидратации. Решение отложить shadcn/ui до
+    первой реальной потребности (формы — ICECAT-346).
+  - ICECAT-323 — глобальный `(main)/layout.tsx` с `Topbar` (sticky +
+    backdrop-blur + мобильное меню) и `Footer` (4 колонки + соцсети).
+    Компоненты логотипа `ZPMark`/`ZPLogo` перенесены как React-компоненты.
+  - ICECAT-325 — i18n (ADR-004): отложили установку `next-intl` до
+    реальной активации второго языка; сейчас все UI-строки живут
+    структурированно в `components/layout/nav-data.ts` (готовы к
+    механической замене на `t('key')`).
+  - ICECAT-324 — схема коллекций Payload (ADR-005): детальные поля всех
+    9 коллекций + правила доступа `admin`/`editor` + rules публичного API.
+  - Next.js развёрнут под PM2 как `zelect-next` на порту 3778 (прототип
+    держит 3777 до ICECAT-363). Доступен: http://144.91.95.134:3778/
 
 ## В работе
 

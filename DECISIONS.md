@@ -119,5 +119,99 @@ medusa_clmerch и др.) — инфраструктура проверена, б
 
 ---
 
-*Следующие ADR: выбор i18n-библиотеки (ADR-004), детальная схема коллекций
-Payload (ADR-005), стратегия миграции дизайн-токенов в Tailwind (ADR-006).*
+## [ADR-004] i18n: отложить next-intl, держать архитектурную готовность
+
+**Дата:** 2026-04-21
+**Статус:** принято (v1)
+
+**Контекст:**
+TZ §4.4 требует архитектурной готовности к мультиязычности (uk обязательно
+в v1, ru/en/pl — потенциально потом). При этом v1 активирует **только uk** —
+устанавливать полноценную i18n-библиотеку прямо сейчас значит тащить зависимость
+без пользователей.
+
+**Варианты:**
+1. Установить `next-intl` сразу, подготовить ICU-словари, использовать везде.
+2. Отложить установку, но держать все UI-строки структурированно (константы в
+   `components/*/nav-data.ts` и т.п.), чтобы при подключении `next-intl`
+   можно было механически вытащить их в словари.
+3. Пользоваться встроенной i18n Payload (`localized: true` на полях) и
+   ничего не ставить на фронте.
+
+**Решение:**
+Вариант 2. Фронт пишем на жёстком украинском, но **все UI-строки живут в
+константах** (`nav-data.ts`, `lib/*`), а не захардкожены в JSX — это делает
+будущее подключение `next-intl` механическим (замена константы на `t('key')`).
+
+Когда владелец активирует второй язык — выберем `next-intl` (App Router-first,
+активно поддерживается), добавим префикс локали в URL (`/uk/produkty`,
+`/ru/produkty`), плюс Payload по-прежнему отдаёт локализованный контент
+через `localized: true`.
+
+**Последствия:**
+- Сейчас на странице нет полей `lang`-переключателя; `LangPill` из прототипа
+  в Next.js-layout пока не переносим.
+- Экономия ~50 KB JS + один меньше источник ошибок при деплое.
+- URL-структура v1: без префикса локали, `/` = uk. При добавлении `ru` —
+  переводим все маршруты под `/uk/*` и `/ru/*` редиректами.
+
+---
+
+## [ADR-005] Детальная схема коллекций Payload
+
+**Дата:** 2026-04-21
+**Статус:** принято (проект, до установки Payload — ICECAT-333)
+
+**Контекст:**
+TZ §4.2 перечисляет 9 коллекций/global'ов. Перед тем как писать `payload.config.ts`
+и миграции, фиксируем ключевые поля и правила доступа. Это минимизирует переделку
+схемы после первых загрузок контента.
+
+**Принципы:**
+- **Все контентные тексты с `localized: true`** — uk-только в v1, но готовность к ru/en/pl
+  (см. ADR-004).
+- **Roles**: `admin` (полный доступ) vs `editor` (контент r/w, Settings read-only,
+  Submissions r/w — чтобы ответить клиенту).
+- **Slug**: auto-generate из `title`, но редактируемый. Unique в пределах коллекции.
+- **SEO-поля** выносим в общий field-group `seo`:
+  `seoTitle` (optional, fallback на `title`), `seoDescription`, `ogImage` (rel → Media).
+
+### Collections
+
+| Коллекция | Ключевые поля | Особенности |
+|---|---|---|
+| **Users** | email, name, role (`admin`\|`editor`), auth | Auth-коллекция, email-unique |
+| **Categories** | title, slug, description, parent (rel self, ≤1 глубина), order, image (rel Media), seo | Валидация: parent.parent === null (max 2 уровня) |
+| **Products** | title, slug, article (unique), category (rel, required), gallery (array→Media), description (richText), specs (array `{label, value}`), documents (array→Media PDF), featured (bool), seo **+ hidden admin-only:** `price`, `currency` (UAH\|USD\|EUR), `stock` (in_stock\|to_order\|out_of_stock), `minOrderQty` | TZ §4.5 — задел под корзину |
+| **Services** | title, slug, icon (select), summary, description, bullets (array localized), order, image, seo | icon-select ограничен набором из прототипа |
+| **News** | title, slug, category (select), publishedAt, excerpt, body, coverImage, author (rel Users), status (draft\|published), seo | Публичный API: `status=published && publishedAt ≤ now` |
+| **Pages** | title, slug, body, status, seo | Для «О компании», «Політика», «404» и пр. |
+| **Media** | alt (localized required), caption, file | image/*, application/pdf. Resize: thumb 400 / card 800 / hero 1600 / og 1200×630. Output WebP |
+| **Submissions** | type (quote\|contact\|product_inquiry), fullName, company, phone, email, message, productRef (rel Products), source (url), ipHash, status (new\|contacted\|closed), createdAt | UI read-only (создаётся только через public API). Hook → email admin |
+
+### Globals
+
+| Global | Поля |
+|---|---|
+| **Settings** | companyName, legalName, vatNumber, contacts { phone, email, emailTender, emailService, address }, offices (array), social { linkedin, facebook, youtube, telegram }, defaultSeo, hotline |
+
+### Access (черновик)
+
+- `admin` — `create/read/update/delete` на всё.
+- `editor` — `create/read/update` на Products, Categories, Services, News, Pages,
+  Media; `read/update` на Submissions; `read` на Settings, Users.
+- Публичный API (`depth=2`, без авторизации) — только published-контент, Settings,
+  Media; **POST /api/submissions** — создание заявок (с honeypot + rate-limit).
+
+**Последствия:**
+- В `ICECAT-327..337` реализация идёт строго по этой таблице.
+- Когда понадобится корзина — достаточно "показать" hidden-поля Products в UI
+  и на фронте; схема уже готова.
+- Переименование полей после первых загрузок контента будет дороже — поэтому
+  фиксируем сейчас.
+
+---
+
+*Следующие ADR: стратегия миграции дизайн-токенов в Tailwind (ADR-006, если
+потребуется), хостинг media (локально vs S3, ADR-007), выбор SMTP/Resend
+для Submissions (ADR-008).*
