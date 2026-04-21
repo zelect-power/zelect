@@ -149,3 +149,23 @@ export const IcCheck = (p: IconProps) => (
     <path d="M4 12l5 5L20 6" />
   </Ic>
 );
+
+export const IcPhone = (p: IconProps) => (
+  <Ic {...p}>
+    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
+  </Ic>
+);
+
+export const IcMail = (p: IconProps) => (
+  <Ic {...p}>
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="M3 7l9 6 9-6" />
+  </Ic>
+);
+
+export const IcPin = (p: IconProps) => (
+  <Ic {...p}>
+    <path d="M12 22s7-7 7-12a7 7 0 00-14 0c0 5 7 12 7 12z" />
+    <circle cx="12" cy="10" r="2.5" />
+  </Ic>
+);

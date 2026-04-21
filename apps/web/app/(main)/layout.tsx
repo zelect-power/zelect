@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter_Tight, JetBrains_Mono, Science_Gothic } from 'next/font/google';
 import type { ReactNode } from 'react';
 
+import { CookieBanner } from '@/components/cookie-banner';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Footer } from '@/components/layout/footer';
 import { Topbar } from '@/components/layout/topbar';
@@ -74,6 +75,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
           <Topbar />
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
+          <CookieBanner />
         </ThemeProvider>
       </body>
     </html>
