@@ -22,6 +22,7 @@ const NEXTAPP = process.env.NEXT_URL ?? 'http://127.0.0.1:3778';
 
 const TARGETS = [
   { key: 'next-home', label: 'Next · Головна', url: `${NEXTAPP}/` },
+  { key: 'next-admin', label: 'Next · Payload Admin', url: `${NEXTAPP}/admin` },
   { key: 'proto-home', label: 'Прототип · Головна', url: `${PROTOTYPE}/` },
   {
     key: 'proto-products',
@@ -88,9 +89,11 @@ async function main() {
         const fileName = `${target.key}-${theme}-${vp.key}.png`;
         const filePath = resolve(outDir, fileName);
         try {
+          // /admin первая компиляция в dev — до 2 минут. Прочие страницы ≤10 с.
+          const timeout = target.key.startsWith('next-admin') ? 120000 : 30000;
           await page.goto(target.url, {
             waitUntil: 'networkidle',
-            timeout: 25000,
+            timeout,
           });
           // Wait a bit for fonts + animations to settle.
           await page.waitForTimeout(500);
