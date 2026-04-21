@@ -38,6 +38,8 @@ window.ZP_TOKENS = {
   // typography
   fontSans: "'Inter Tight', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif",
   fontMono: "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+  // ICECAT-365 — Science Gothic для всех заголовков (h1-h6 + крупные div-заголовки в карточках)
+  fontHeading: "'Science Gothic', 'Inter Tight', 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif",
   // radii
   rSm: 6,
   rMd: 10,

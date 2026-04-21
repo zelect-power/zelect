@@ -13,7 +13,7 @@ function PageHeader({ theme, eyebrow, title, sub }) {
       <div style={{ maxWidth: 1440, margin: '0 auto', position: 'relative' }}>
         <Eyebrow theme={theme}>{eyebrow}</Eyebrow>
         <h1 style={{
-          fontFamily: window.ZP_TOKENS.fontSans,
+          fontFamily: window.ZP_TOKENS.fontHeading,
           fontSize: 'clamp(44px, 5.5vw, 80px)', fontWeight: 700,
           lineHeight: 1.0, letterSpacing: '-0.035em', color: t.text,
           margin: '20px 0 0', maxWidth: 1000, textWrap: 'balance',
@@ -266,7 +266,7 @@ function NewsPage({ theme }) {
                 <span style={{ color: t.textDim, fontFamily: window.ZP_TOKENS.fontMono }}>{n.d}</span>
               </div>
               <h3 style={{
-                margin: 0, fontFamily: window.ZP_TOKENS.fontSans, fontWeight: 700,
+                margin: 0, fontFamily: window.ZP_TOKENS.fontHeading, fontWeight: 700,
                 fontSize: 26, lineHeight: 1.2, color: t.text, letterSpacing: '-0.02em', textWrap: 'balance',
               }}>{n.t}</h3>
               <p style={{ margin: 0, color: t.textSub, fontSize: 15, lineHeight: 1.55, flex: 1 }}>{n.e}</p>

@@ -38,7 +38,7 @@ function H2({ children, theme, size = 56 }) {
   const t = window.ZP_THEMES[theme];
   return (
     <h2 style={{
-      fontFamily: window.ZP_TOKENS.fontSans,
+      fontFamily: window.ZP_TOKENS.fontHeading,
       fontSize: size, fontWeight: 700, lineHeight: 1.02, letterSpacing: '-0.03em',
       color: t.text, margin: 0, textWrap: 'balance',
     }}>{children}</h2>
@@ -122,7 +122,7 @@ function Counter({ to, suffix = '', duration = 1400, theme }) {
   }, []);
   return (
     <span ref={ref} style={{
-      fontFamily: window.ZP_TOKENS.fontSans, fontWeight: 700,
+      fontFamily: window.ZP_TOKENS.fontHeading, fontWeight: 700,
       fontSize: 72, lineHeight: 1, letterSpacing: '-0.04em',
       color: t.text,
       fontVariantNumeric: 'tabular-nums',

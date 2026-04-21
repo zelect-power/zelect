@@ -20,7 +20,7 @@ function HomeHero({ theme, setPage }) {
         }}>
           <Eyebrow theme={theme}>Енергетичне обладнання · виробництво в Україні</Eyebrow>
           <h1 style={{
-            fontFamily: window.ZP_TOKENS.fontSans,
+            fontFamily: window.ZP_TOKENS.fontHeading,
             fontSize: 'clamp(48px, 6vw, 88px)', fontWeight: 700,
             lineHeight: 0.98, letterSpacing: '-0.035em',
             color: t.text, margin: '24px 0 0', textWrap: 'balance',
@@ -541,7 +541,7 @@ function HomeContact({ theme, setPage }) {
       }}>
         <Eyebrow theme={theme}>Співпраця</Eyebrow>
         <h2 style={{
-          fontFamily: window.ZP_TOKENS.fontSans,
+          fontFamily: window.ZP_TOKENS.fontHeading,
           fontSize: 'clamp(44px, 5.5vw, 80px)', fontWeight: 700,
           lineHeight: 1.0, letterSpacing: '-0.035em',
           color: t.text, margin: '24px 0 0', textWrap: 'balance',
