@@ -1,13 +1,41 @@
 // App root — router, theme, layout
-const { useState: uAS, useEffect: uAE } = React;
+const { useState: uAS, useEffect: uAE, useCallback: uAC } = React;
+
+// URL ↔ page key. Пути синхронизированы с TZ.md §3 (будут использоваться и в Next.js).
+const ZP_PAGE_TO_PATH = {
+  home:     '/',
+  products: '/produkty',
+  services: '/poslugy',
+  support:  '/pidtrymka',
+  news:     '/novyny',
+  contacts: '/kontakty',
+};
+const ZP_PATH_TO_PAGE = Object.fromEntries(
+  Object.entries(ZP_PAGE_TO_PATH).map(([k, v]) => [v, k])
+);
+
+function zpResolvePage(pathname) {
+  if (ZP_PATH_TO_PAGE[pathname]) return ZP_PATH_TO_PAGE[pathname];
+  // /produkty/anything → products (будущие вложенные роуты)
+  for (const [path, page] of Object.entries(ZP_PATH_TO_PAGE)) {
+    if (path !== '/' && pathname.startsWith(path + '/')) return page;
+  }
+  return 'home';
+}
 
 function App() {
   const [theme, setTheme] = uAS(() => {
     try { return localStorage.getItem('zp-theme') || 'light'; } catch { return 'light'; }
   });
-  const [page, setPage] = uAS(() => {
-    try { return localStorage.getItem('zp-page') || 'home'; } catch { return 'home'; }
-  });
+  const [page, setPageState] = uAS(() => zpResolvePage(window.location.pathname));
+
+  const navigate = uAC((next) => {
+    const path = ZP_PAGE_TO_PATH[next] || '/';
+    if (window.location.pathname !== path) {
+      window.history.pushState({ page: next }, '', path);
+    }
+    setPageState(next);
+  }, []);
 
   uAE(() => {
     try { localStorage.setItem('zp-theme', theme); } catch {}
@@ -18,9 +46,15 @@ function App() {
   }, [theme]);
 
   uAE(() => {
-    try { localStorage.setItem('zp-page', page); } catch {}
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [page]);
+
+  // Back/forward — синхронизация state с URL
+  uAE(() => {
+    const onPop = () => setPageState(zpResolvePage(window.location.pathname));
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
 
   // Tweaks: expose theme toggle
   uAE(() => {
@@ -38,21 +72,21 @@ function App() {
 
   let pageEl;
   switch (page) {
-    case 'products': pageEl = <ProductsPage theme={theme} setPage={setPage}/>; break;
-    case 'services': pageEl = <ServicesPage theme={theme} setPage={setPage}/>; break;
-    case 'support':  pageEl = <SupportPage theme={theme} setPage={setPage}/>; break;
+    case 'products': pageEl = <ProductsPage theme={theme} setPage={navigate}/>; break;
+    case 'services': pageEl = <ServicesPage theme={theme} setPage={navigate}/>; break;
+    case 'support':  pageEl = <SupportPage theme={theme} setPage={navigate}/>; break;
     case 'news':     pageEl = <NewsPage theme={theme}/>; break;
     case 'contacts': pageEl = <ContactsPage theme={theme}/>; break;
-    default:         pageEl = <HomePage theme={theme} setPage={setPage}/>;
+    default:         pageEl = <HomePage theme={theme} setPage={navigate}/>;
   }
 
   return (
     <div data-screen-label={page} style={{ background: t.bg, color: t.text, minHeight: '100vh', fontFamily: window.ZP_TOKENS.fontSans }}>
-      <Topbar page={page} setPage={setPage} theme={theme} setTheme={setTheme}/>
+      <Topbar page={page} setPage={navigate} theme={theme} setTheme={setTheme}/>
       <main key={page} style={{ animation: 'zp-page-in .5s cubic-bezier(.2,.7,.2,1)' }}>
         {pageEl}
       </main>
-      <Footer theme={theme} setPage={setPage}/>
+      <Footer theme={theme} setPage={navigate}/>
     </div>
   );
 }
