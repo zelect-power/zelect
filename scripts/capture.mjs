@@ -22,6 +22,11 @@ const NEXTAPP = process.env.NEXT_URL ?? 'http://127.0.0.1:3778';
 
 const TARGETS = [
   { key: 'next-home', label: 'Next · Головна', url: `${NEXTAPP}/` },
+  { key: 'next-products', label: 'Next · Продукти', url: `${NEXTAPP}/produkty` },
+  { key: 'next-services', label: 'Next · Послуги', url: `${NEXTAPP}/poslugy` },
+  { key: 'next-support', label: 'Next · Підтримка', url: `${NEXTAPP}/pidtrymka` },
+  { key: 'next-news', label: 'Next · Новини', url: `${NEXTAPP}/novyny` },
+  { key: 'next-contacts', label: 'Next · Контакти', url: `${NEXTAPP}/kontakty` },
   { key: 'next-admin', label: 'Next · Payload Admin', url: `${NEXTAPP}/admin` },
   { key: 'proto-home', label: 'Прототип · Головна', url: `${PROTOTYPE}/` },
   {
