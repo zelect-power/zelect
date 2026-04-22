@@ -152,6 +152,10 @@ html,
 body {
   margin: 0;
   padding: 0;
+  /* overflow-x: clip — современный аналог overflow-x: hidden, не ломает
+     position: sticky в заголовке. Нужен, чтобы ticker-marquee (HomeTicker)
+     не раздувал общий scrollWidth на таблет-ширинах. */
+  overflow-x: clip;
 }
 
 body {

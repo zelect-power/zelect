@@ -58,7 +58,9 @@ const TARGETS = [
 
 const VIEWPORTS = [
   { key: 'desktop', width: 1440, height: 900 },
-  { key: 'mobile', width: 390, height: 844 },
+  { key: 'laptop', width: 1024, height: 768 },
+  { key: 'tablet', width: 768, height: 1024 },
+  { key: 'mobile', width: 375, height: 812 }, // iPhone SE/13 mini
 ];
 
 const THEMES = ['light', 'dark'];

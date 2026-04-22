@@ -9,7 +9,8 @@
     "check": "bash scripts/check.sh --skip-build",
     "check:full": "bash scripts/check.sh",
     "record": "node scripts/record.mjs",
-    "capture": "node scripts/capture.mjs"
+    "capture": "node scripts/capture.mjs",
+    "audit:responsive": "node scripts/responsive-audit.mjs"
   },
   "dependencies": {
     "serve-handler": "^6.1.6"
