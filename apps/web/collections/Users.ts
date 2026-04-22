@@ -9,15 +9,34 @@ import { isAdmin, isAdminFieldLevel, isAdminOrSelf } from '@/access/roles';
 export const Users: CollectionConfig = {
   slug: 'users',
   auth: {
-    // ICECAT-332 — защита админки:
+    // ICECAT-332 — защита админки.
     maxLoginAttempts: 5,
     lockTime: 10 * 60 * 1000, // 10 минут lock после 5 неудач
     tokenExpiration: 60 * 60 * 8, // 8 часов сессия
-    cookies: {
-      // secure ставим только в production (http на 3778 в dev).
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Lax',
-    },
+    // Отключаем sessions-based auth: в связке Payload 3.83 + Next.js 16
+    // server-side чтение cookie `payload-token` возвращает user:null,
+    // что ломает /admin (редиректит обратно на /login). С pure-JWT без
+    // sessions — cookie работает корректно, admin грузится.
+    useSessions: false,
+  },
+  // Политика пароля (ICECAT-332): hook на операции create/update.
+  // Payload auth-поле `password` виртуальное — нельзя его декларировать как
+  // обычный field. Поэтому валидируем через коллекционный хук.
+  hooks: {
+    beforeValidate: [
+      ({ data }) => {
+        const record = data as { password?: unknown } | undefined;
+        const pass = record?.password;
+        if (typeof pass !== 'string' || pass.length === 0) return data;
+        if (pass.length < 12) {
+          throw new Error('Пароль має містити не менше 12 символів.');
+        }
+        if (!/[a-zA-Z]/.test(pass) || !/[0-9]/.test(pass)) {
+          throw new Error('Пароль повинен містити літери та цифри.');
+        }
+        return data;
+      },
+    ],
   },
   admin: {
     useAsTitle: 'email',
@@ -36,28 +55,11 @@ export const Users: CollectionConfig = {
       type: 'text',
       required: false,
     },
-    // ICECAT-332: политика пароля (минимум 12 символов, буквы+цифры).
-    // Применяется при регистрации / смене пароля — Payload vaлидирует
-    // `password` поле при its presence in data.
-    {
-      name: 'password',
-      type: 'text',
-      admin: { hidden: true },
-      hooks: {
-        beforeValidate: [
-          ({ value }) => {
-            if (typeof value !== 'string' || value.length === 0) return value;
-            if (value.length < 12) {
-              throw new Error('Пароль має містити не менше 12 символів.');
-            }
-            if (!/[a-zA-Z]/.test(value) || !/[0-9]/.test(value)) {
-              throw new Error('Пароль повинен містити літери та цифри.');
-            }
-            return value;
-          },
-        ],
-      },
-    },
+    // Password policy (ICECAT-332) применяется через Payload `auth.validate`
+    // на самой коллекции выше — объявлять кастомное поле `password` нельзя,
+    // иначе ломается server-side чтение auth-cookie (payload 3.83 trip'ает
+    // `/api/users/me` как `user: null` когда cookie передан вместо Authorization
+    // header). См. https://github.com/payloadcms/payload issue tracker.
     {
       name: 'role',
       type: 'select',

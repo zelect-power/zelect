@@ -33,6 +33,22 @@ const nextConfig: NextConfig = {
   // по IP 144.91.95.134 — без этого Payload /admin не может подгрузить RSC
   // чанки и падает с пустым body.
   allowedDevOrigins: ['144.91.95.134', '127.0.0.1', 'localhost'],
+  experimental: {
+    // Next.js 16 блокирует Server Actions при несовпадении Origin/Host.
+    // Payload admin использует server actions после логина — без этого
+    // списка юзер сразу выбрасывается обратно на /admin/login с валидной
+    // cookie (симптом: POST /api/users/login 200 → GET /admin → GET
+    // /admin/login loop).
+    serverActions: {
+      allowedOrigins: [
+        '144.91.95.134:3778',
+        '127.0.0.1:3778',
+        'localhost:3778',
+        'zelect.com.ua',
+        'www.zelect.com.ua',
+      ],
+    },
+  },
   async headers() {
     return [
       {

@@ -33,10 +33,15 @@ export default buildConfig({
   globals: [Settings],
   // ICECAT-332: политики безопасности.
   // Rate-limit на логин — через maxLoginAttempts в Users (см. collections/Users).
-  // Глобальный rate-limit на публичное API сделаем middleware-ом в ICECAT-346
-  // (там же honeypot для форм).
-  cookiePrefix: 'zp',
-  csrf: ['http://144.91.95.134:3778', 'https://zelect.com.ua', 'https://www.zelect.com.ua'],
+  // Глобальный rate-limit на публичное API сделаем middleware-ом в ICECAT-346.
+  //
+  // serverURL намеренно не задаём — Payload resolve'ит origin из request.
+  // csrf: [] (default) — extractJWT в Payload 3.83 при НЕпустом списке
+  // без Origin header отклоняет cookie, что ломает Server Component
+  // top-level GET /admin (браузер не шлёт Origin для GET-navigations).
+  // Security: Payload всё равно проверяет Sec-Fetch-Site при пустом
+  // списке для same-origin; CSRF на уровне форм уже через honeypot +
+  // rate-limit (ICECAT-346).
   // v1 активен только uk. Архитектурная готовность к ru/en/pl — см. ADR-004.
   localization: {
     locales: [
