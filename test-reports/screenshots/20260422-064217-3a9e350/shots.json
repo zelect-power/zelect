@@ -1,0 +1,938 @@
+[
+  {
+    "target": "next-home",
+    "label": "Next · Головна",
+    "url": "http://127.0.0.1:3778/",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-home-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-products",
+    "label": "Next · Продукти",
+    "url": "http://127.0.0.1:3778/produkty",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-products-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-services",
+    "label": "Next · Послуги",
+    "url": "http://127.0.0.1:3778/poslugy",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-services-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-support",
+    "label": "Next · Підтримка",
+    "url": "http://127.0.0.1:3778/pidtrymka",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-support-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-news",
+    "label": "Next · Новини",
+    "url": "http://127.0.0.1:3778/novyny",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-news-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-contacts",
+    "label": "Next · Контакти",
+    "url": "http://127.0.0.1:3778/kontakty",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-contacts-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-admin",
+    "label": "Next · Payload Admin",
+    "url": "http://127.0.0.1:3778/admin",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-admin-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-home",
+    "label": "Прототип · Головна",
+    "url": "http://127.0.0.1:3777/",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-home-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-products",
+    "label": "Прототип · Продукти",
+    "url": "http://127.0.0.1:3777/produkty",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-products-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-services",
+    "label": "Прототип · Послуги",
+    "url": "http://127.0.0.1:3777/poslugy",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-services-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-support",
+    "label": "Прототип · Підтримка",
+    "url": "http://127.0.0.1:3777/pidtrymka",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-support-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-news",
+    "label": "Прототип · Новини",
+    "url": "http://127.0.0.1:3777/novyny",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-news-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-contacts",
+    "label": "Прототип · Контакти",
+    "url": "http://127.0.0.1:3777/kontakty",
+    "theme": "light",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-contacts-light-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-home",
+    "label": "Next · Головна",
+    "url": "http://127.0.0.1:3778/",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-home-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-products",
+    "label": "Next · Продукти",
+    "url": "http://127.0.0.1:3778/produkty",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-products-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-services",
+    "label": "Next · Послуги",
+    "url": "http://127.0.0.1:3778/poslugy",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-services-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-support",
+    "label": "Next · Підтримка",
+    "url": "http://127.0.0.1:3778/pidtrymka",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-support-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-news",
+    "label": "Next · Новини",
+    "url": "http://127.0.0.1:3778/novyny",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-news-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-contacts",
+    "label": "Next · Контакти",
+    "url": "http://127.0.0.1:3778/kontakty",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-contacts-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-admin",
+    "label": "Next · Payload Admin",
+    "url": "http://127.0.0.1:3778/admin",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/next-admin-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-home",
+    "label": "Прототип · Головна",
+    "url": "http://127.0.0.1:3777/",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-home-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-products",
+    "label": "Прототип · Продукти",
+    "url": "http://127.0.0.1:3777/produkty",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-products-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-services",
+    "label": "Прототип · Послуги",
+    "url": "http://127.0.0.1:3777/poslugy",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-services-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-support",
+    "label": "Прототип · Підтримка",
+    "url": "http://127.0.0.1:3777/pidtrymka",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-support-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-news",
+    "label": "Прототип · Новини",
+    "url": "http://127.0.0.1:3777/novyny",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-news-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-contacts",
+    "label": "Прототип · Контакти",
+    "url": "http://127.0.0.1:3777/kontakty",
+    "theme": "dark",
+    "viewport": "desktop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-contacts-dark-desktop.png",
+    "ok": true
+  },
+  {
+    "target": "next-home",
+    "label": "Next · Головна",
+    "url": "http://127.0.0.1:3778/",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-home-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-products",
+    "label": "Next · Продукти",
+    "url": "http://127.0.0.1:3778/produkty",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-products-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-services",
+    "label": "Next · Послуги",
+    "url": "http://127.0.0.1:3778/poslugy",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-services-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-support",
+    "label": "Next · Підтримка",
+    "url": "http://127.0.0.1:3778/pidtrymka",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-support-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-news",
+    "label": "Next · Новини",
+    "url": "http://127.0.0.1:3778/novyny",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-news-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-contacts",
+    "label": "Next · Контакти",
+    "url": "http://127.0.0.1:3778/kontakty",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-contacts-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-admin",
+    "label": "Next · Payload Admin",
+    "url": "http://127.0.0.1:3778/admin",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-admin-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-home",
+    "label": "Прототип · Головна",
+    "url": "http://127.0.0.1:3777/",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-home-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-products",
+    "label": "Прототип · Продукти",
+    "url": "http://127.0.0.1:3777/produkty",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-products-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-services",
+    "label": "Прототип · Послуги",
+    "url": "http://127.0.0.1:3777/poslugy",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-services-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-support",
+    "label": "Прототип · Підтримка",
+    "url": "http://127.0.0.1:3777/pidtrymka",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-support-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-news",
+    "label": "Прототип · Новини",
+    "url": "http://127.0.0.1:3777/novyny",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-news-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-contacts",
+    "label": "Прототип · Контакти",
+    "url": "http://127.0.0.1:3777/kontakty",
+    "theme": "light",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-contacts-light-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-home",
+    "label": "Next · Головна",
+    "url": "http://127.0.0.1:3778/",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-home-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-products",
+    "label": "Next · Продукти",
+    "url": "http://127.0.0.1:3778/produkty",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-products-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-services",
+    "label": "Next · Послуги",
+    "url": "http://127.0.0.1:3778/poslugy",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-services-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-support",
+    "label": "Next · Підтримка",
+    "url": "http://127.0.0.1:3778/pidtrymka",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-support-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-news",
+    "label": "Next · Новини",
+    "url": "http://127.0.0.1:3778/novyny",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-news-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-contacts",
+    "label": "Next · Контакти",
+    "url": "http://127.0.0.1:3778/kontakty",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-contacts-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-admin",
+    "label": "Next · Payload Admin",
+    "url": "http://127.0.0.1:3778/admin",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/next-admin-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-home",
+    "label": "Прототип · Головна",
+    "url": "http://127.0.0.1:3777/",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-home-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-products",
+    "label": "Прототип · Продукти",
+    "url": "http://127.0.0.1:3777/produkty",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-products-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-services",
+    "label": "Прототип · Послуги",
+    "url": "http://127.0.0.1:3777/poslugy",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-services-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-support",
+    "label": "Прототип · Підтримка",
+    "url": "http://127.0.0.1:3777/pidtrymka",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-support-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-news",
+    "label": "Прототип · Новини",
+    "url": "http://127.0.0.1:3777/novyny",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-news-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "proto-contacts",
+    "label": "Прототип · Контакти",
+    "url": "http://127.0.0.1:3777/kontakty",
+    "theme": "dark",
+    "viewport": "laptop",
+    "path": "screenshots/20260422-064217-3a9e350/proto-contacts-dark-laptop.png",
+    "ok": true
+  },
+  {
+    "target": "next-home",
+    "label": "Next · Головна",
+    "url": "http://127.0.0.1:3778/",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-home-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-products",
+    "label": "Next · Продукти",
+    "url": "http://127.0.0.1:3778/produkty",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-products-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-services",
+    "label": "Next · Послуги",
+    "url": "http://127.0.0.1:3778/poslugy",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-services-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-support",
+    "label": "Next · Підтримка",
+    "url": "http://127.0.0.1:3778/pidtrymka",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-support-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-news",
+    "label": "Next · Новини",
+    "url": "http://127.0.0.1:3778/novyny",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-news-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-contacts",
+    "label": "Next · Контакти",
+    "url": "http://127.0.0.1:3778/kontakty",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-contacts-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-admin",
+    "label": "Next · Payload Admin",
+    "url": "http://127.0.0.1:3778/admin",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-admin-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-home",
+    "label": "Прототип · Головна",
+    "url": "http://127.0.0.1:3777/",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-home-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-products",
+    "label": "Прототип · Продукти",
+    "url": "http://127.0.0.1:3777/produkty",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-products-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-services",
+    "label": "Прототип · Послуги",
+    "url": "http://127.0.0.1:3777/poslugy",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-services-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-support",
+    "label": "Прототип · Підтримка",
+    "url": "http://127.0.0.1:3777/pidtrymka",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-support-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-news",
+    "label": "Прототип · Новини",
+    "url": "http://127.0.0.1:3777/novyny",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-news-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-contacts",
+    "label": "Прототип · Контакти",
+    "url": "http://127.0.0.1:3777/kontakty",
+    "theme": "light",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-contacts-light-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-home",
+    "label": "Next · Головна",
+    "url": "http://127.0.0.1:3778/",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-home-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-products",
+    "label": "Next · Продукти",
+    "url": "http://127.0.0.1:3778/produkty",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-products-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-services",
+    "label": "Next · Послуги",
+    "url": "http://127.0.0.1:3778/poslugy",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-services-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-support",
+    "label": "Next · Підтримка",
+    "url": "http://127.0.0.1:3778/pidtrymka",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-support-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-news",
+    "label": "Next · Новини",
+    "url": "http://127.0.0.1:3778/novyny",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-news-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-contacts",
+    "label": "Next · Контакти",
+    "url": "http://127.0.0.1:3778/kontakty",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-contacts-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-admin",
+    "label": "Next · Payload Admin",
+    "url": "http://127.0.0.1:3778/admin",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/next-admin-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-home",
+    "label": "Прототип · Головна",
+    "url": "http://127.0.0.1:3777/",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-home-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-products",
+    "label": "Прототип · Продукти",
+    "url": "http://127.0.0.1:3777/produkty",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-products-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-services",
+    "label": "Прототип · Послуги",
+    "url": "http://127.0.0.1:3777/poslugy",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-services-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-support",
+    "label": "Прототип · Підтримка",
+    "url": "http://127.0.0.1:3777/pidtrymka",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-support-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-news",
+    "label": "Прототип · Новини",
+    "url": "http://127.0.0.1:3777/novyny",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-news-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "proto-contacts",
+    "label": "Прототип · Контакти",
+    "url": "http://127.0.0.1:3777/kontakty",
+    "theme": "dark",
+    "viewport": "tablet",
+    "path": "screenshots/20260422-064217-3a9e350/proto-contacts-dark-tablet.png",
+    "ok": true
+  },
+  {
+    "target": "next-home",
+    "label": "Next · Головна",
+    "url": "http://127.0.0.1:3778/",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-home-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-products",
+    "label": "Next · Продукти",
+    "url": "http://127.0.0.1:3778/produkty",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-products-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-services",
+    "label": "Next · Послуги",
+    "url": "http://127.0.0.1:3778/poslugy",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-services-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-support",
+    "label": "Next · Підтримка",
+    "url": "http://127.0.0.1:3778/pidtrymka",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-support-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-news",
+    "label": "Next · Новини",
+    "url": "http://127.0.0.1:3778/novyny",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-news-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-contacts",
+    "label": "Next · Контакти",
+    "url": "http://127.0.0.1:3778/kontakty",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-contacts-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-admin",
+    "label": "Next · Payload Admin",
+    "url": "http://127.0.0.1:3778/admin",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-admin-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-home",
+    "label": "Прототип · Головна",
+    "url": "http://127.0.0.1:3777/",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-home-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-products",
+    "label": "Прототип · Продукти",
+    "url": "http://127.0.0.1:3777/produkty",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-products-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-services",
+    "label": "Прототип · Послуги",
+    "url": "http://127.0.0.1:3777/poslugy",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-services-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-support",
+    "label": "Прототип · Підтримка",
+    "url": "http://127.0.0.1:3777/pidtrymka",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-support-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-news",
+    "label": "Прототип · Новини",
+    "url": "http://127.0.0.1:3777/novyny",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-news-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-contacts",
+    "label": "Прототип · Контакти",
+    "url": "http://127.0.0.1:3777/kontakty",
+    "theme": "light",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-contacts-light-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-home",
+    "label": "Next · Головна",
+    "url": "http://127.0.0.1:3778/",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-home-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-products",
+    "label": "Next · Продукти",
+    "url": "http://127.0.0.1:3778/produkty",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-products-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-services",
+    "label": "Next · Послуги",
+    "url": "http://127.0.0.1:3778/poslugy",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-services-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-support",
+    "label": "Next · Підтримка",
+    "url": "http://127.0.0.1:3778/pidtrymka",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-support-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-news",
+    "label": "Next · Новини",
+    "url": "http://127.0.0.1:3778/novyny",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-news-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-contacts",
+    "label": "Next · Контакти",
+    "url": "http://127.0.0.1:3778/kontakty",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-contacts-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "next-admin",
+    "label": "Next · Payload Admin",
+    "url": "http://127.0.0.1:3778/admin",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/next-admin-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-home",
+    "label": "Прототип · Головна",
+    "url": "http://127.0.0.1:3777/",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-home-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-products",
+    "label": "Прототип · Продукти",
+    "url": "http://127.0.0.1:3777/produkty",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-products-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-services",
+    "label": "Прототип · Послуги",
+    "url": "http://127.0.0.1:3777/poslugy",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-services-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-support",
+    "label": "Прототип · Підтримка",
+    "url": "http://127.0.0.1:3777/pidtrymka",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-support-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-news",
+    "label": "Прототип · Новини",
+    "url": "http://127.0.0.1:3777/novyny",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-news-dark-mobile.png",
+    "ok": true
+  },
+  {
+    "target": "proto-contacts",
+    "label": "Прототип · Контакти",
+    "url": "http://127.0.0.1:3777/kontakty",
+    "theme": "dark",
+    "viewport": "mobile",
+    "path": "screenshots/20260422-064217-3a9e350/proto-contacts-dark-mobile.png",
+    "ok": true
+  }
+]
