@@ -7,6 +7,21 @@ import { withPayload } from '@payloadcms/next/withPayload';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// ICECAT-359 — Security headers на уровне Next.js.
+// HSTS и принудительный https выставит nginx (ICECAT-362), здесь — те
+// заголовки, которые имеет смысл отдавать из приложения независимо от
+// reverse-proxy.
+const securityHeaders = [
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+  },
+  { key: 'X-DNS-Prefetch-Control', value: 'on' },
+];
+
 const nextConfig: NextConfig = {
   // Явно фиксируем рабочую директорию Turbopack, чтобы он не подхватывал
   // корневой package-lock.json (там живёт serve-handler для прототипа).
@@ -18,6 +33,16 @@ const nextConfig: NextConfig = {
   // по IP 144.91.95.134 — без этого Payload /admin не может подгрузить RSC
   // чанки и падает с пустым body.
   allowedDevOrigins: ['144.91.95.134', '127.0.0.1', 'localhost'],
+  async headers() {
+    return [
+      {
+        // Публичные роуты и статика. Админку Payload не ограничиваем
+        // X-Frame-Options (он сам нуждается в iframe для preview).
+        source: '/((?!admin|api).*)',
+        headers: securityHeaders,
+      },
+    ];
+  },
 };
 
 export default withPayload(nextConfig);

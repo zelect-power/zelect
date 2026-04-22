@@ -16,6 +16,8 @@
     "serve-handler": "^6.1.6"
   },
   "devDependencies": {
-    "playwright": "^1.59.1"
+    "dotenv": "^17.4.2",
+    "playwright": "^1.59.1",
+    "tsx": "^4.21.0"
   }
 }

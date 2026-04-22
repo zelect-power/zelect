@@ -9,7 +9,8 @@
     "start": "next start --port 3778 --hostname 0.0.0.0",
     "lint": "eslint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.4",
@@ -20,7 +21,8 @@
     "next": "16.2.4",
     "payload": "^3.83.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
