@@ -1,6 +1,24 @@
 {
   "entries": [
     {
+      "id": "20260422-061324-e529432",
+      "createdAt": "2026-04-22T06:13:24.818Z",
+      "description": "Этап 5: sitemap (40 URL) + robots + OG/Twitter + JSON-LD Organization + GA4 (gated cookie consent) + DB backup cron (03:05 UTC)",
+      "linearIds": [
+        "ICECAT-355",
+        "ICECAT-356",
+        "ICECAT-357",
+        "ICECAT-361"
+      ],
+      "git": {
+        "sha": "e529432255264ef2fe095baaabf0e0e873eb0e79",
+        "short": "e529432",
+        "msg": "feat(seo+infra): sitemap + robots + meta/OG + GA4 (gated) + DB backup",
+        "branch": "main"
+      },
+      "shots": []
+    },
+    {
       "id": "20260422-013449-2188b68",
       "createdAt": "2026-04-22T01:48:45.954Z",
       "description": "Этап 3 завершён: audit responsive 40/40 зелёные, overflow-x:clip fix, скрины в 4 viewport",
