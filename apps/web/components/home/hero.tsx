@@ -4,11 +4,9 @@ import { TechGrid } from '@/components/common/tech-grid';
 import { CtaButton } from '@/components/ui/cta-button';
 import { ROUTES } from '@/lib/routes';
 
-const HERO_BADGES = [
-  { v: 'ДСТУ', l: 'IEC 60076' },
-  { v: '24/7', l: 'Сервіс та підтримка' },
-  { v: 'UA', l: 'Виробництво' },
-];
+// ICECAT-367 — клиент попросил оставить только один бейдж ДСТУ (IEC 60076 + ISO),
+// убрать 24/7 и «UA / Виробництво» (компания — поставщик, не производитель).
+const HERO_BADGES = [{ v: 'ДСТУ', l: 'IEC 60076 + ISO' }];
 
 export function HomeHero() {
   return (
@@ -23,7 +21,7 @@ export function HomeHero() {
       <TechGrid opacity={0.6} />
       <div className="relative mx-auto grid min-h-[calc(100vh-180px)] max-w-[1440px] items-center gap-16 lg:grid-cols-[1.05fr_1fr]">
         <div>
-          <Eyebrow>Енергетичне обладнання · виробництво в Україні</Eyebrow>
+          <Eyebrow>Енергетичне обладнання</Eyebrow>
           <h1
             className="text-foreground mt-6 font-bold"
             style={{
@@ -52,7 +50,7 @@ export function HomeHero() {
               Отримати пропозицію
             </CtaButton>
           </div>
-          <dl className="border-border-theme mt-14 grid max-w-[560px] grid-cols-3 gap-8 border-t pt-8">
+          <dl className="border-border-theme mt-14 flex max-w-[560px] gap-10 border-t pt-8">
             {HERO_BADGES.map((b) => (
               <div key={b.l}>
                 <dt

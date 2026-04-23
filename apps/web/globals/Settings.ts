@@ -71,6 +71,79 @@ export const Settings: GlobalConfig = {
           ],
         },
         {
+          // ICECAT-367 — кастомайзер главной: клиент включает/выключает блоки.
+          // Дефолты соответствуют запросу клиента: оставить только hero / why /
+          // support / news / contact; остальные скрыть.
+          label: 'Головна сторінка',
+          fields: [
+            {
+              name: 'homepage',
+              type: 'group',
+              label: 'Блоки на головній',
+              admin: {
+                description:
+                  'Увімкніть або вимкніть блоки на головній сторінці. Порядок блоків фіксований дизайном.',
+              },
+              fields: [
+                {
+                  name: 'showTicker',
+                  type: 'checkbox',
+                  label: 'Стрічка клієнтів (ticker)',
+                  defaultValue: false,
+                },
+                {
+                  name: 'showProducts',
+                  type: 'checkbox',
+                  label: 'Сітка категорій продукції',
+                  defaultValue: false,
+                },
+                {
+                  name: 'showStats',
+                  type: 'checkbox',
+                  label: 'Лічильники (18 / 2400+ / 8500 МВА / 24/7)',
+                  defaultValue: false,
+                },
+                {
+                  name: 'showServices',
+                  type: 'checkbox',
+                  label: 'Повний цикл (6 послуг)',
+                  defaultValue: false,
+                },
+                {
+                  name: 'showWhy',
+                  type: 'checkbox',
+                  label: 'Чому Zelect Power (4 переваги)',
+                  defaultValue: true,
+                },
+                {
+                  name: 'showCases',
+                  type: 'checkbox',
+                  label: 'Реалізовані проєкти (кейси)',
+                  defaultValue: false,
+                },
+                {
+                  name: 'showSupport',
+                  type: 'checkbox',
+                  label: 'Сервіс / підтримка',
+                  defaultValue: true,
+                },
+                {
+                  name: 'showCerts',
+                  type: 'checkbox',
+                  label: 'Сертифікати',
+                  defaultValue: false,
+                },
+                {
+                  name: 'showNews',
+                  type: 'checkbox',
+                  label: 'Новини',
+                  defaultValue: true,
+                },
+              ],
+            },
+          ],
+        },
+        {
           label: 'SEO за замовчуванням',
           fields: [
             {

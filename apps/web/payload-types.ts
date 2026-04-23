@@ -948,6 +948,20 @@ export interface Setting {
     youtube?: string | null;
     telegram?: string | null;
   };
+  /**
+   * Увімкніть або вимкніть блоки на головній сторінці. Порядок блоків фіксований дизайном.
+   */
+  homepage?: {
+    showTicker?: boolean | null;
+    showProducts?: boolean | null;
+    showStats?: boolean | null;
+    showServices?: boolean | null;
+    showWhy?: boolean | null;
+    showCases?: boolean | null;
+    showSupport?: boolean | null;
+    showCerts?: boolean | null;
+    showNews?: boolean | null;
+  };
   defaultSeo?: {
     title?: string | null;
     description?: string | null;
@@ -990,6 +1004,19 @@ export interface SettingsSelect<T extends boolean = true> {
         facebook?: T;
         youtube?: T;
         telegram?: T;
+      };
+  homepage?:
+    | T
+    | {
+        showTicker?: T;
+        showProducts?: T;
+        showStats?: T;
+        showServices?: T;
+        showWhy?: T;
+        showCases?: T;
+        showSupport?: T;
+        showCerts?: T;
+        showNews?: T;
       };
   defaultSeo?:
     | T

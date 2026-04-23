@@ -18,13 +18,13 @@ export function HomeSupport() {
           style={{ background: 'var(--gradient-glow)' }}
         />
         <div className="relative">
-          <Eyebrow>24/7 підтримка</Eyebrow>
+          <Eyebrow>Підтримка</Eyebrow>
           <H2 size={44} className="mt-5">
             Сервіс, який працює, поки працює ваше обладнання
           </H2>
           <div className="mt-6">
             <Lead>
-              Цілодобовий гарячий зв&apos;язок, виїзна бригада з діагностичним комплексом, склад
+              Гарячий зв&apos;язок у робочі години, виїзна бригада з діагностичним комплексом, склад
               критичних запчастин, віддалений моніторинг стану.
             </Lead>
           </div>
