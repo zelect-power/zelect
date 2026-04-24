@@ -13,3 +13,6 @@ dist/
 build/
 coverage/
 *.tsbuildinfo
+
+# Stray rendered logo files in repo root (исходники лежат в logo ZP.zip)
+/Безымянный*
