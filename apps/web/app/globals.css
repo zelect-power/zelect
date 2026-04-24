@@ -158,6 +158,25 @@ body {
   overflow-x: clip;
 }
 
+/* ICECAT-375 — плавный скролл для якорных переходов (sticky sub-nav на
+   /pro-kompaniyu). `scroll-margin-top` у секций-якорей учитывает обе sticky
+   панели (topbar ~65px + sub-nav ~56px = ~128px + запас). */
+html {
+  scroll-behavior: smooth;
+}
+section[id='certificates'],
+section[id='cases'],
+section[id='partners'] {
+  scroll-margin-top: 140px;
+}
+
+/* Учитываем prefers-reduced-motion для пользователей с vestibular-чувствительностью. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background: var(--color-bg);
   color: var(--color-text);
