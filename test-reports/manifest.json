@@ -1,6 +1,21 @@
 {
   "entries": [
     {
+      "id": "20260424-134156-e10660a",
+      "createdAt": "2026-04-24T13:41:56.326Z",
+      "description": "ICECAT-373 remove Виробництво from services",
+      "linearIds": [
+        "ICECAT-373"
+      ],
+      "git": {
+        "sha": "e10660a58b660015fc794561a934fd52aaddcabf",
+        "short": "e10660a",
+        "msg": "feat(services): убрать Виробництво — компания поставщик, не производитель (ICECAT-373)",
+        "branch": "main"
+      },
+      "shots": []
+    },
+    {
       "id": "20260424-094520-76ba9b6",
       "createdAt": "2026-04-24T09:45:20.203Z",
       "description": "ICECAT-371 mobile responsive fix",

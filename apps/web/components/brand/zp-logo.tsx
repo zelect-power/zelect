@@ -1,34 +1,26 @@
-'use client';
-
 import Image from 'next/image';
-
-import { useTheme } from '@/components/theme-provider';
 
 interface Props {
   compact?: boolean;
 }
 
-// ICECAT-372 — используем реальный горизонтальный лого клиента из
-// /home/developer/projects/zelect/logo ZP.zip (SVG с эмблемой и wordmark
-// «Zelect Power Technology» внутри). Тема переключает светлый / тёмный
-// вариант, чтобы лого читался и на светлом, и на тёмном фоне.
+// ICECAT-374 — реальный горизонтальный лого Zelect Power Technology из архива
+// клиента `/logo ZP.zip`. SVG с обрезанным viewBox по bbox контента (aspect
+// 3.46:1), чтобы при h≈32px Z-mark + wordmark занимали всю высоту без пустот.
+// Один SVG на обе темы — зелёный градиент читается и на светлом, и на тёмном.
+// Серверный компонент — `useTheme()` больше не нужен.
+const ASPECT = 1812 / 524; // viewBox cropped = "54 278 1812 524"
+
 export function ZPLogo({ compact = false }: Props) {
-  const { resolved } = useTheme();
-  const src =
-    resolved === 'dark'
-      ? '/brand/zp-logo-horizontal-dark.svg'
-      : '/brand/zp-logo-horizontal-light.svg';
-  const h = compact ? 28 : 36;
-  // Исходный viewBox 1920×1080 → aspect 16:9.
-  const w = Math.round(h * (1920 / 1080));
+  const h = compact ? 28 : 32;
+  const w = Math.round(h * ASPECT);
   return (
     <Image
-      src={src}
+      src="/brand/zp-logo-horizontal.svg"
       alt="Zelect Power Technology"
       width={w}
       height={h}
       priority
-      className="h-auto w-auto"
       style={{ height: h, width: w }}
     />
   );

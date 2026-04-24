@@ -1,21 +1,21 @@
-'use client';
-
 import Image from 'next/image';
-
-import { useTheme } from '@/components/theme-provider';
 
 interface Props {
   size?: number;
   className?: string;
 }
 
-// Знак "Z" — реальные логотипы из /home/developer/projects/zelect/logo ZP.zip
-// (ICECAT-comment). Два SVG: mark-light для светлой темы, mark-dark для тёмной.
+// ICECAT-374 — Z-монограмма из архива клиента `/logo ZP.zip`, с обрезанным
+// viewBox (aspect 1.21:1). Используется там, где нет места под полный wordmark.
 export function ZPMark({ size = 32, className }: Props) {
-  const { resolved } = useTheme();
-  const src =
-    resolved === 'dark' ? '/brand/zp-logo-mark-dark.svg' : '/brand/zp-logo-mark-light.svg';
   return (
-    <Image src={src} alt="Zelect Power" width={size} height={size} priority className={className} />
+    <Image
+      src="/brand/zp-logo-mark.svg"
+      alt="Zelect Power"
+      width={size}
+      height={size}
+      priority
+      className={className}
+    />
   );
 }
