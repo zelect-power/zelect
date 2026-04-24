@@ -33,7 +33,7 @@ export function AboutNav() {
   return (
     <nav
       aria-label="Розділи «Про компанію»"
-      className="bg-background/80 border-border-theme sticky top-[72px] z-30 -mx-10 overflow-x-auto border-b px-10 py-3 backdrop-blur-md"
+      className="bg-background/80 border-border-theme sticky top-[72px] z-30 -mx-5 overflow-x-auto border-b px-5 py-3 backdrop-blur-md md:-mx-10 md:px-10"
     >
       <ul className="mx-auto flex max-w-[1440px] gap-2">
         {SECTIONS.map((s) => {

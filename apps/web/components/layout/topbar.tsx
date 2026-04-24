@@ -108,7 +108,7 @@ export function Topbar() {
     <header
       className={`sticky top-0 z-50 w-full border-b transition-colors duration-250 ${headerBg}`}
     >
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-8 px-10">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-8 px-5 md:px-10">
         <Link href={ROUTES.home} className="block py-4">
           <ZPLogo />
         </Link>

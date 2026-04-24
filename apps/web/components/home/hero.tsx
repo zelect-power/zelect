@@ -11,7 +11,7 @@ const HERO_BADGES = [{ v: 'ДСТУ', l: 'IEC 60076 + ISO' }];
 export function HomeHero() {
   return (
     <section
-      className="bg-background relative overflow-hidden px-10 pt-10 pb-[120px]"
+      className="bg-background relative overflow-hidden px-5 pt-8 pb-20 md:px-10 md:pt-10 md:pb-[120px]"
       style={{ animation: 'zp-page-in .5s cubic-bezier(.2,.7,.2,1)' }}
     >
       <div
@@ -19,16 +19,17 @@ export function HomeHero() {
         style={{ background: 'var(--color-hero-overlay)' }}
       />
       <TechGrid opacity={0.6} />
-      <div className="relative mx-auto grid min-h-[calc(100vh-180px)] max-w-[1440px] items-center gap-16 lg:grid-cols-[1.05fr_1fr]">
+      <div className="relative mx-auto grid min-h-[calc(100vh-180px)] max-w-[1440px] items-center gap-10 md:gap-16 lg:grid-cols-[1.05fr_1fr]">
         <div>
           <Eyebrow>Енергетичне обладнання</Eyebrow>
           <h1
-            className="text-foreground mt-6 font-bold"
+            className="text-foreground mt-5 font-bold md:mt-6"
             style={{
-              fontSize: 'clamp(48px, 6vw, 88px)',
-              lineHeight: 0.98,
-              letterSpacing: '-0.035em',
+              fontSize: 'clamp(34px, 7vw, 88px)',
+              lineHeight: 1.02,
+              letterSpacing: '-0.03em',
               textWrap: 'balance',
+              wordBreak: 'break-word',
             }}
           >
             Енергія, що <GradText>тримає</GradText>
@@ -36,13 +37,13 @@ export function HomeHero() {
             критичну інфраструктуру
           </h1>
           <p
-            className="text-muted-foreground mt-8 max-w-[560px] text-[20px] leading-[1.5]"
+            className="text-muted-foreground mt-6 max-w-[560px] text-[16px] leading-[1.5] md:mt-8 md:text-[20px]"
             style={{ textWrap: 'pretty' }}
           >
             Силові та розподільчі трансформатори, КТП, розподільчі пристрої і кабельна продукція для
             промисловості та державного сектору України.
           </p>
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3 md:mt-10">
             <CtaButton href={ROUTES.products} size="lg">
               Каталог продукції
             </CtaButton>
@@ -50,7 +51,7 @@ export function HomeHero() {
               Отримати пропозицію
             </CtaButton>
           </div>
-          <dl className="border-border-theme mt-14 flex max-w-[560px] gap-10 border-t pt-8">
+          <dl className="border-border-theme mt-10 flex max-w-[560px] gap-10 border-t pt-6 md:mt-14 md:pt-8">
             {HERO_BADGES.map((b) => (
               <div key={b.l}>
                 <dt

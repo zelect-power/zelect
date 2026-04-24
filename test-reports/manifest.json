@@ -1,6 +1,24 @@
 {
   "entries": [
     {
+      "id": "20260424-080837-37c47cf",
+      "createdAt": "2026-04-24T08:08:38.070Z",
+      "description": "ICECAT-368/369/370/372 client review round",
+      "linearIds": [
+        "ICECAT-368",
+        "ICECAT-369",
+        "ICECAT-370",
+        "ICECAT-372"
+      ],
+      "git": {
+        "sha": "37c47cf07b8045485fb7a80e26f3634c60616126",
+        "short": "37c47cf",
+        "msg": "feat(site): ICECAT-368 / -369 / -370 / -372 client review round",
+        "branch": "main"
+      },
+      "shots": []
+    },
+    {
       "id": "20260422-084454-cf1032d",
       "createdAt": "2026-04-22T08:57:47.476Z",
       "description": "FIX: /admin логин работает. csrf-список убран (ломал cookie для top-level GET), next16 serverActions allowedOrigins, password policy перенесена в hook. Логотипы: реальные SVG из logo ZP.zip подхвачены ZPMark + favicon.",

@@ -56,10 +56,15 @@ export default async function ProductsPage({ searchParams }: Props) {
         </div>
       </Section>
       <Section padding="compact" className="!pt-6 !pb-[120px]">
-        <article className="bg-surface border-border-theme max-w-[900px] rounded-[20px] border p-8">
+        <article className="bg-surface border-border-theme max-w-[900px] rounded-[20px] border p-6 md:p-8">
           <h2
-            className="text-foreground m-0 text-[32px] font-bold tracking-[-0.02em]"
-            style={{ fontFamily: 'var(--font-heading)' }}
+            className="text-foreground m-0 font-bold tracking-[-0.02em]"
+            style={{
+              fontFamily: 'var(--font-heading)',
+              fontSize: 'clamp(22px, 5.5vw, 32px)',
+              lineHeight: 1.15,
+              wordBreak: 'break-word',
+            }}
           >
             {active.title}
           </h2>

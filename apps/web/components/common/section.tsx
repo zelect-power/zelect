@@ -9,9 +9,9 @@ interface Props {
 }
 
 const padClass: Record<NonNullable<Props['padding']>, string> = {
-  regular: 'py-[120px] px-10',
-  compact: 'py-20 px-10',
-  'hero-bottom': 'pt-10 pb-[120px] px-10',
+  regular: 'py-16 px-5 md:py-[120px] md:px-10',
+  compact: 'py-12 px-5 md:py-20 md:px-10',
+  'hero-bottom': 'pt-8 pb-16 px-5 md:pt-10 md:pb-[120px] md:px-10',
 };
 
 export function Section({ id, children, alt = false, className = '', padding = 'regular' }: Props) {
@@ -47,10 +47,16 @@ export function H2({
   size?: number;
   className?: string;
 }) {
+  // Mobile → desktop: на 375px шрифт не превышает 30-32px (не даёт overflow),
+  // на десктопе — значение `size` как было.
   return (
     <h2
-      className={`text-foreground m-0 leading-[1.02] font-bold tracking-[-0.03em] ${className}`}
-      style={{ fontSize: size, textWrap: 'balance' }}
+      className={`text-foreground m-0 leading-[1.08] font-bold tracking-[-0.03em] ${className}`}
+      style={{
+        fontSize: `clamp(28px, 6vw, ${size}px)`,
+        textWrap: 'balance',
+        wordBreak: 'break-word',
+      }}
     >
       {children}
     </h2>

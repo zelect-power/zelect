@@ -44,7 +44,7 @@ export default async function CategoryPage({ params }: Props) {
         />
       </Section>
       <Section padding="compact" className="!pt-6 !pb-[120px]">
-        <article className="bg-surface border-border-theme max-w-[900px] rounded-[20px] border p-8">
+        <article className="bg-surface border-border-theme max-w-[900px] rounded-[20px] border p-6 md:p-8">
           <div className="text-muted-foreground flex flex-col gap-3 text-[16px] leading-[1.65]">
             {cat.description.map((line, i) => (
               <p key={i} className="m-0">

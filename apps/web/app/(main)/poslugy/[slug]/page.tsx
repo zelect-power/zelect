@@ -64,7 +64,7 @@ export default async function ServiceDetail({ params }: Props) {
               Гарантія 12 місяців на пусконалагоджувальні роботи та до 36 місяців на обладнання.
             </p>
           </div>
-          <div className="bg-surface border-border-theme rounded-[20px] border p-8">
+          <div className="bg-surface border-border-theme rounded-[20px] border p-6 md:p-8">
             <div
               className="text-foreground text-[18px] font-bold"
               style={{ fontFamily: 'var(--font-heading)' }}

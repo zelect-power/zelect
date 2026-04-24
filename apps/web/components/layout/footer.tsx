@@ -5,9 +5,9 @@ import { FOOTER_COLUMNS, FOOTER_SOCIAL } from '@/components/layout/nav-data';
 
 export function Footer() {
   return (
-    <footer className="bg-background-alt border-border-theme border-t px-10 pt-20 pb-8">
+    <footer className="bg-background-alt border-border-theme border-t px-5 pt-14 pb-8 md:px-10 md:pt-20">
       <div className="mx-auto max-w-[1440px]">
-        <div className="grid gap-12 md:grid-cols-5">
+        <div className="grid gap-10 md:grid-cols-5 md:gap-12">
           <div className="md:col-span-1">
             <ZPLogo />
             <p className="text-muted-foreground mt-5 max-w-xs text-sm leading-relaxed">

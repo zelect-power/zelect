@@ -15,7 +15,7 @@ export function HomeTicker() {
   const items = [...CLIENTS, ...CLIENTS];
   return (
     <div className="border-border-theme bg-background-alt flex items-center gap-10 overflow-hidden border-t border-b py-7">
-      <div className="border-border-theme text-faint-foreground mr-5 flex-none border-r px-10 text-[11px] font-semibold tracking-[0.14em] uppercase">
+      <div className="border-border-theme text-faint-foreground mr-3 flex-none border-r px-5 text-[11px] font-semibold tracking-[0.14em] uppercase md:mr-5 md:px-10">
         Нам довіряють
       </div>
       <div

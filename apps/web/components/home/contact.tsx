@@ -8,17 +8,18 @@ export function HomeContact() {
       <div className="relative mx-auto max-w-[900px] text-center">
         <Eyebrow>Співпраця</Eyebrow>
         <h2
-          className="text-foreground m-0 mt-6 font-bold"
+          className="text-foreground m-0 mt-5 font-bold md:mt-6"
           style={{
-            fontSize: 'clamp(44px, 5.5vw, 80px)',
-            lineHeight: 1.0,
-            letterSpacing: '-0.035em',
+            fontSize: 'clamp(30px, 6.5vw, 80px)',
+            lineHeight: 1.05,
+            letterSpacing: '-0.03em',
             textWrap: 'balance',
+            wordBreak: 'break-word',
           }}
         >
           Обговорімо ваш <GradText>енергооб&apos;єкт</GradText>
         </h2>
-        <p className="text-muted-foreground mx-auto mt-6 max-w-[600px] text-[20px] leading-[1.5]">
+        <p className="text-muted-foreground mx-auto mt-5 max-w-[600px] text-[16px] leading-[1.5] md:mt-6 md:text-[20px]">
           Розрахунок, комерційна пропозиція та технічна консультація — безкоштовно протягом 48
           годин.
         </p>
