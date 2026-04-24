@@ -104,45 +104,61 @@ export function Topbar() {
     ? 'bg-background/80 backdrop-blur-lg saturate-[140%] border-border-theme'
     : 'bg-transparent border-transparent';
 
+  // ICECAT-377 — блокируем скролл body, пока открыто мобильное меню,
+  // чтобы пользователь не прокручивал подложку сквозь dialog.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileOpen]);
+
   return (
-    <header
-      className={`sticky top-0 z-50 w-full border-b transition-colors duration-250 ${headerBg}`}
-    >
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-8 px-5 md:px-10">
-        <Link href={ROUTES.home} className="block py-4">
-          <ZPLogo />
-        </Link>
+    <>
+      <header
+        className={`sticky top-0 z-50 w-full border-b transition-colors duration-250 ${headerBg}`}
+      >
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-8 px-5 md:px-10">
+          <Link href={ROUTES.home} className="block py-4">
+            <ZPLogo />
+          </Link>
 
-        <nav className="hidden flex-1 justify-center gap-7 md:flex">
-          {TOP_NAV.map((item) => (
-            <NavLink
-              key={item.href}
-              label={item.label}
-              href={item.href}
-              active={isActive(item.href)}
-              onClick={closeMobile}
-            />
-          ))}
-        </nav>
+          <nav className="hidden flex-1 justify-center gap-7 md:flex">
+            {TOP_NAV.map((item) => (
+              <NavLink
+                key={item.href}
+                label={item.label}
+                href={item.href}
+                active={isActive(item.href)}
+                onClick={closeMobile}
+              />
+            ))}
+          </nav>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <span className="hidden md:inline-flex">
-            <CtaButton href={ROUTES.contacts} size="sm">
-              {NAV_CTA_LABEL}
-            </CtaButton>
-          </span>
-          <button
-            type="button"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Відкрити меню"
-            className="border-border-theme text-foreground hover:bg-background-soft inline-flex h-9 w-9 items-center justify-center rounded-[10px] border md:hidden"
-          >
-            <IconMenu />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <span className="hidden md:inline-flex">
+              <CtaButton href={ROUTES.contacts} size="sm">
+                {NAV_CTA_LABEL}
+              </CtaButton>
+            </span>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Відкрити меню"
+              className="border-border-theme text-foreground hover:bg-background-soft inline-flex h-9 w-9 items-center justify-center rounded-[10px] border md:hidden"
+            >
+              <IconMenu />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
+      {/* ICECAT-377 — dialog выносится за пределы <header>: у header'а
+          `backdrop-blur-lg` создаёт containing block, из-за чего `fixed
+          inset-0` ведёт себя как `absolute` относительно header-box. */}
       {mobileOpen && (
         <div
           role="dialog"
@@ -179,6 +195,6 @@ export function Topbar() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

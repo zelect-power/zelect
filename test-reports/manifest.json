@@ -1,6 +1,21 @@
 {
   "entries": [
     {
+      "id": "20260424-140750-8b7ee25",
+      "createdAt": "2026-04-24T14:07:50.518Z",
+      "description": "ICECAT-374 real Zelect logo with cropped viewBox",
+      "linearIds": [
+        "ICECAT-374"
+      ],
+      "git": {
+        "sha": "8b7ee2556a6ba5de9e6a07a7b07de108b274f7f7",
+        "short": "8b7ee25",
+        "msg": "feat(brand): реальный лого Zelect Power Technology из архива клиента (ICECAT-374)",
+        "branch": "main"
+      },
+      "shots": []
+    },
+    {
       "id": "20260424-134156-e10660a",
       "createdAt": "2026-04-24T13:41:56.326Z",
       "description": "ICECAT-373 remove Виробництво from services",
