@@ -1,6 +1,21 @@
 {
   "entries": [
     {
+      "id": "20260424-094520-76ba9b6",
+      "createdAt": "2026-04-24T09:45:20.203Z",
+      "description": "ICECAT-371 mobile responsive fix",
+      "linearIds": [
+        "ICECAT-371"
+      ],
+      "git": {
+        "sha": "76ba9b6c00ff3ba32bb5d79b2c87cbc669068510",
+        "short": "76ba9b6",
+        "msg": "fix(mobile): адаптация всех страниц под 375px (ICECAT-371)",
+        "branch": "main"
+      },
+      "shots": []
+    },
+    {
       "id": "20260424-080837-37c47cf",
       "createdAt": "2026-04-24T08:08:38.070Z",
       "description": "ICECAT-368/369/370/372 client review round",

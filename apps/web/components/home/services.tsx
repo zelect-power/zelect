@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import { Eyebrow, H2, Lead, Section } from '@/components/common/section';
 import { CtaButton } from '@/components/ui/cta-button';
-import { IcBuild, IcCog, IcDoc, IcFactory, IcSpark, IcWrench } from '@/components/icons';
+import { IcBuild, IcCog, IcDoc, IcSpark, IcWrench } from '@/components/icons';
 import { ROUTES } from '@/lib/routes';
 
 interface Item {
@@ -19,32 +19,27 @@ const ITEMS: Item[] = [
     d: 'Розробка технічних рішень, проєктна документація, погодження з Укренерго та обленерго.',
     ic: <IcDoc size={20} />,
   },
+  // ICECAT-373 — «Виробництво» убрано: компания — поставщик, не производитель.
   {
     n: '02',
-    t: 'Виробництво',
-    d: 'Власне виробництво на заводі в Україні з повним циклом контролю якості.',
-    ic: <IcFactory size={20} />,
-  },
-  {
-    n: '03',
     t: 'Монтаж',
     d: 'Доставка, такелажні роботи, монтаж на об\u2019єкті силами сертифікованих бригад.',
     ic: <IcBuild size={20} />,
   },
   {
-    n: '04',
+    n: '03',
     t: 'Пусконалагодження',
     d: 'Високовольтні випробування, налаштування релейного захисту, введення в експлуатацію.',
     ic: <IcSpark size={20} />,
   },
   {
-    n: '05',
+    n: '04',
     t: 'Сервіс',
     d: 'Планові огляди, діагностика, регламентні роботи з виїздом по всій Україні.',
     ic: <IcWrench size={20} />,
   },
   {
-    n: '06',
+    n: '05',
     t: 'Модернізація',
     d: 'Капітальний ремонт та модернізація обладнання радянського виробництва.',
     ic: <IcCog size={20} />,

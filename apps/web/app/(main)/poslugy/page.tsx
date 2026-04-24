@@ -3,13 +3,12 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/common/breadcrumbs';
 import { PageHeader } from '@/components/common/page-header';
 import { Section } from '@/components/common/section';
-import { IcBuild, IcCheck, IcCog, IcDoc, IcFactory, IcSpark, IcWrench } from '@/components/icons';
+import { IcBuild, IcCheck, IcCog, IcDoc, IcSpark, IcWrench } from '@/components/icons';
 import { SERVICES_FALLBACK } from '@/lib/fallback';
 import { ROUTES } from '@/lib/routes';
 
 const ICON: Record<string, (p: { size?: number }) => React.ReactElement> = {
   doc: (p) => <IcDoc {...p} />,
-  factory: (p) => <IcFactory {...p} />,
   build: (p) => <IcBuild {...p} />,
   spark: (p) => <IcSpark {...p} />,
   wrench: (p) => <IcWrench {...p} />,
@@ -19,7 +18,7 @@ const ICON: Record<string, (p: { size?: number }) => React.ReactElement> = {
 export const metadata = {
   title: 'Послуги',
   description:
-    "Життєвий цикл енергооб'єкта під одним контрактом: проєктування, виробництво, монтаж, пусконалагодження, сервіс, модернізація.",
+    "Життєвий цикл енергооб'єкта під одним контрактом: проєктування, монтаж, пусконалагодження, сервіс, модернізація.",
 };
 
 export default function ServicesPage() {
@@ -35,13 +34,20 @@ export default function ServicesPage() {
       </Section>
       <Section padding="compact" className="!pt-8 !pb-[120px]">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {SERVICES_FALLBACK.map((s) => {
+          {SERVICES_FALLBACK.map((s, i) => {
             const Icon = ICON[s.icon] ?? IcCog;
+            // Симметрия при нечётном числе услуг: последняя карточка растягивается
+            // на обе колонки, чтобы не оставалась одинокой в последнем ряду.
+            const isOddLast =
+              i === SERVICES_FALLBACK.length - 1 && SERVICES_FALLBACK.length % 2 === 1;
             return (
               <Link
                 key={s.slug}
                 href={`${ROUTES.services}/${s.slug}`}
-                className="bg-surface border-border-theme hover:border-border-strong group flex flex-col gap-6 rounded-[20px] border p-9 transition-all hover:-translate-y-1"
+                className={
+                  'bg-surface border-border-theme hover:border-border-strong group flex flex-col gap-6 rounded-[20px] border p-9 transition-all hover:-translate-y-1 ' +
+                  (isOddLast ? 'md:col-span-2' : '')
+                }
               >
                 <div className="flex items-start justify-between">
                   <div
