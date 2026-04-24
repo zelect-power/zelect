@@ -5,6 +5,7 @@ export const ROUTES = {
   home: '/',
   products: '/produkty',
   services: '/poslugy',
+  about: '/pro-kompaniyu',
   support: '/pidtrymka',
   news: '/novyny',
   contacts: '/kontakty',

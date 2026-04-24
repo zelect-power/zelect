@@ -32,7 +32,7 @@ export default function SupportPage() {
         <Breadcrumbs items={[{ label: 'Головна', href: ROUTES.home }, { label: 'Підтримка' }]} />
       </Section>
       <Section padding="compact" className="!pt-4">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {SUPPORT_CHANNELS.map((c) => (
             <div key={c.t} className="bg-surface border-border-theme rounded-[20px] border p-7">
               <div className="text-brand-theme">{CHANNEL_ICON[c.icon]}</div>

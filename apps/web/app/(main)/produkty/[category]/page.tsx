@@ -1,11 +1,10 @@
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { Breadcrumbs } from '@/components/common/breadcrumbs';
 import { PageHeader } from '@/components/common/page-header';
 import { Section } from '@/components/common/section';
-import { IcArrowUR } from '@/components/icons';
-import { CATEGORIES_FALLBACK, PRODUCTS_FALLBACK } from '@/lib/fallback';
+import { CtaButton } from '@/components/ui/cta-button';
+import { CATEGORIES_FALLBACK } from '@/lib/fallback';
 import { ROUTES } from '@/lib/routes';
 
 interface Props {
@@ -22,20 +21,19 @@ export async function generateMetadata({ params }: Props) {
   if (!cat) return { title: 'Категорія не знайдена' };
   return {
     title: cat.title,
-    description: `${cat.title} — каталог Zelect Power. Виготовлення та постачання в Україні.`,
+    description: cat.description[0] ?? `${cat.title} — каталог Zelect Power.`,
   };
 }
 
+// ICECAT-369 — страница категории: описание вместо карточек товаров.
 export default async function CategoryPage({ params }: Props) {
   const { category } = await params;
   const cat = CATEGORIES_FALLBACK.find((c) => c.slug === category);
   if (!cat) notFound();
 
-  const items = PRODUCTS_FALLBACK.filter((p) => p.categorySlug === category);
-
   return (
     <>
-      <PageHeader eyebrow="Продукти · категорія" title={cat.title} />
+      <PageHeader eyebrow="Продукти · категорія" title={cat.title} sub={cat.subtitle} />
       <Section padding="compact">
         <Breadcrumbs
           items={[
@@ -45,48 +43,24 @@ export default async function CategoryPage({ params }: Props) {
           ]}
         />
       </Section>
-      <Section padding="compact" className="!pt-5 !pb-[120px]">
-        {items.length === 0 ? (
-          <p className="text-muted-foreground">Каталог цієї категорії ще наповнюється.</p>
-        ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((p) => (
-              <Link
-                key={p.slug}
-                href={`${ROUTES.products}/${p.categorySlug}/${p.slug}`}
-                className="bg-surface border-border-theme hover:border-border-strong group rounded-[20px] border p-7 transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-card)]"
-              >
-                <div
-                  className="text-faint-foreground mt-8 text-xs tracking-[0.06em]"
-                  style={{ fontFamily: 'var(--font-mono)' }}
-                >
-                  {p.desc}
-                </div>
-                <div
-                  className="text-foreground mt-1.5 text-[24px] font-bold tracking-[-0.02em]"
-                  style={{ fontFamily: 'var(--font-heading)' }}
-                >
-                  {p.title}
-                </div>
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {p.specs.map((s) => (
-                    <span
-                      key={s}
-                      className="bg-background-soft border-border-theme text-muted-foreground rounded-md border px-2.5 py-1 text-[11px]"
-                      style={{ fontFamily: 'var(--font-mono)' }}
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-                <div className="border-border-theme mt-6 flex items-center justify-between border-t pt-5">
-                  <span className="text-foreground text-[13px] font-medium">Технічні дані</span>
-                  <IcArrowUR size={18} />
-                </div>
-              </Link>
+      <Section padding="compact" className="!pt-6 !pb-[120px]">
+        <article className="bg-surface border-border-theme max-w-[900px] rounded-[20px] border p-8">
+          <div className="text-muted-foreground flex flex-col gap-3 text-[16px] leading-[1.65]">
+            {cat.description.map((line, i) => (
+              <p key={i} className="m-0">
+                {line}
+              </p>
             ))}
           </div>
-        )}
+          <div className="mt-8 flex flex-wrap gap-3">
+            <CtaButton href={ROUTES.contacts} size="lg">
+              Отримати пропозицію
+            </CtaButton>
+            <CtaButton href="tel:+380800300500" variant="ghost" size="lg" icon={false}>
+              0 800 300 500
+            </CtaButton>
+          </div>
+        </article>
       </Section>
     </>
   );

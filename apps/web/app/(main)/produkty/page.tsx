@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/common/breadcrumbs';
 import { PageHeader } from '@/components/common/page-header';
 import { Section } from '@/components/common/section';
-import { IcArrowUR } from '@/components/icons';
-import { CATEGORIES_FALLBACK, PRODUCTS_FALLBACK } from '@/lib/fallback';
+import { CtaButton } from '@/components/ui/cta-button';
+import { CATEGORIES_FALLBACK } from '@/lib/fallback';
 import { ROUTES } from '@/lib/routes';
 
 type SearchParams = Promise<{ cat?: string }>;
@@ -12,43 +12,39 @@ type SearchParams = Promise<{ cat?: string }>;
 export const metadata = {
   title: 'Продукти · каталог',
   description:
-    'Енергетичне обладнання від 0,4 до 110 кВ. Виготовлення за індивідуальним технічним завданням, сертифіковане для держзакупівель Prozorro.',
+    'Силові трансформатори 6(10) кВ — масляні ТМ, герметичні ТМГ, сухі ТС, а також розподільчі трансформатори, КТП та розподільчі пристрої.',
 };
 
 interface Props {
   searchParams: SearchParams;
 }
 
+// ICECAT-369 — по умолчанию активна первая категория (Силові трансформатори).
+// Кнопка «Усі категорії» убрана. Для каждой категории показывается описание,
+// карточки товаров не рендерятся, пока номенклатура не заведена в CMS.
 export default async function ProductsPage({ searchParams }: Props) {
   const { cat } = await searchParams;
-  const activeCat = cat ?? 'all';
-
-  const cats = [{ slug: 'all', title: 'Усі категорії' }, ...CATEGORIES_FALLBACK];
-  const items =
-    activeCat === 'all'
-      ? PRODUCTS_FALLBACK
-      : PRODUCTS_FALLBACK.filter((p) => p.categorySlug === activeCat);
+  const active = CATEGORIES_FALLBACK.find((c) => c.slug === cat) ?? CATEGORIES_FALLBACK[0];
 
   return (
     <>
       <PageHeader
         eyebrow="Продукти · каталог"
         title="Енергетичне обладнання від 0,4 до 110 кВ"
-        sub="Виготовлення за індивідуальним технічним завданням, сертифіковане для держзакупівель Prozorro та міжнародного експорту."
+        sub="Постачання під технічне завдання з дотриманням українських та міжнародних стандартів."
       />
       <Section padding="compact">
         <Breadcrumbs items={[{ label: 'Головна', href: ROUTES.home }, { label: 'Продукти' }]} />
         <div className="mt-6 flex flex-wrap gap-2">
-          {cats.map((c) => {
-            const active = c.slug === activeCat;
-            const href = c.slug === 'all' ? ROUTES.products : `${ROUTES.products}?cat=${c.slug}`;
+          {CATEGORIES_FALLBACK.map((c) => {
+            const isActive = c.slug === active.slug;
             return (
               <Link
                 key={c.slug}
-                href={href}
+                href={`${ROUTES.products}?cat=${c.slug}`}
                 className={
                   'rounded-full border px-4 py-2.5 text-[13px] font-medium transition-all ' +
-                  (active
+                  (isActive
                     ? 'bg-foreground border-foreground text-background'
                     : 'border-border-theme text-foreground hover:border-border-strong')
                 }
@@ -59,44 +55,33 @@ export default async function ProductsPage({ searchParams }: Props) {
           })}
         </div>
       </Section>
-      <Section padding="compact" className="!pt-5 !pb-[120px]">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((p) => (
-            <Link
-              key={p.slug}
-              href={`${ROUTES.products}/${p.categorySlug}/${p.slug}`}
-              className="bg-surface border-border-theme hover:border-border-strong group rounded-[20px] border p-7 transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-card)]"
-            >
-              <div
-                className="text-faint-foreground mt-8 text-xs tracking-[0.06em]"
-                style={{ fontFamily: 'var(--font-mono)' }}
-              >
-                {p.desc}
-              </div>
-              <div
-                className="text-foreground mt-1.5 text-[24px] font-bold tracking-[-0.02em]"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {p.title}
-              </div>
-              <div className="mt-5 flex flex-wrap gap-1.5">
-                {p.specs.map((s) => (
-                  <span
-                    key={s}
-                    className="bg-background-soft border-border-theme text-muted-foreground rounded-md border px-2.5 py-1 text-[11px]"
-                    style={{ fontFamily: 'var(--font-mono)' }}
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-              <div className="border-border-theme mt-6 flex items-center justify-between border-t pt-5">
-                <span className="text-foreground text-[13px] font-medium">Технічні дані</span>
-                <IcArrowUR size={18} />
-              </div>
-            </Link>
-          ))}
-        </div>
+      <Section padding="compact" className="!pt-6 !pb-[120px]">
+        <article className="bg-surface border-border-theme max-w-[900px] rounded-[20px] border p-8">
+          <h2
+            className="text-foreground m-0 text-[32px] font-bold tracking-[-0.02em]"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            {active.title}
+          </h2>
+          {active.subtitle && (
+            <div className="text-brand-theme mt-3 text-[15px] font-semibold">{active.subtitle}</div>
+          )}
+          <div className="text-muted-foreground mt-6 flex flex-col gap-3 text-[16px] leading-[1.65]">
+            {active.description.map((line, i) => (
+              <p key={i} className="m-0">
+                {line}
+              </p>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <CtaButton href={ROUTES.contacts} size="lg">
+              Отримати пропозицію
+            </CtaButton>
+            <CtaButton href="tel:+380800300500" variant="ghost" size="lg" icon={false}>
+              0 800 300 500
+            </CtaButton>
+          </div>
+        </article>
       </Section>
     </>
   );

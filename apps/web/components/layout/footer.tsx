@@ -11,7 +11,7 @@ export function Footer() {
           <div className="md:col-span-1">
             <ZPLogo />
             <p className="text-muted-foreground mt-5 max-w-xs text-sm leading-relaxed">
-              Виробник силових трансформаторів та енергетичного обладнання для промисловості й
+              Постачальник силових трансформаторів та енергетичного обладнання для промисловості й
               державного сектору України.
             </p>
             <div className="mt-6 flex gap-2">
