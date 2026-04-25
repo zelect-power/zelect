@@ -240,3 +240,46 @@ button {
     transform: translateY(0);
   }
 }
+
+/* ICECAT-379 — мобильное меню. Fade + лёгкий slide сверху для dialog,
+   stagger-fade для пунктов навигации. На @reduce — мгновенно. */
+@keyframes zp-mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zp-mobile-item-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes zp-mobile-menu-in {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes zp-mobile-item-in {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

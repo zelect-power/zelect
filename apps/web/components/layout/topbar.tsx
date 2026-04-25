@@ -158,12 +158,14 @@ export function Topbar() {
 
       {/* ICECAT-377 — dialog выносится за пределы <header>: у header'а
           `backdrop-blur-lg` создаёт containing block, из-за чего `fixed
-          inset-0` ведёт себя как `absolute` относительно header-box. */}
+          inset-0` ведёт себя как `absolute` относительно header-box.
+          ICECAT-379 — fade+slide-in анимация контейнера и stagger пунктов. */}
       {mobileOpen && (
         <div
           role="dialog"
           aria-modal="true"
           className="bg-background fixed inset-0 z-[100] flex flex-col px-7 py-6"
+          style={{ animation: 'zp-mobile-menu-in 220ms cubic-bezier(.2,.7,.2,1) both' }}
         >
           <div className="flex items-center justify-between">
             <ZPLogo />
@@ -177,18 +179,26 @@ export function Topbar() {
             </button>
           </div>
           <nav className="mt-10 flex flex-col">
-            {TOP_NAV.map((item) => (
+            {TOP_NAV.map((item, i) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className="border-border-theme text-foreground border-b py-4 text-[22px] font-semibold"
+                style={{
+                  animation: `zp-mobile-item-in 280ms cubic-bezier(.2,.7,.2,1) ${80 + i * 40}ms both`,
+                }}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
-          <div className="mt-10">
+          <div
+            className="mt-10"
+            style={{
+              animation: `zp-mobile-item-in 280ms cubic-bezier(.2,.7,.2,1) ${80 + TOP_NAV.length * 40}ms both`,
+            }}
+          >
             <CtaButton href={ROUTES.contacts} size="lg" onClick={() => setMobileOpen(false)}>
               {NAV_CTA_LABEL}
             </CtaButton>
