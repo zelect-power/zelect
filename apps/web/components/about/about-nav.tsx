@@ -35,7 +35,7 @@ export function AboutNav() {
       aria-label="Розділи «Про компанію»"
       className="bg-background/80 border-border-theme sticky top-[72px] z-30 -mx-5 overflow-x-auto border-b px-5 py-3 backdrop-blur-md md:-mx-10 md:px-10"
     >
-      <ul className="mx-auto flex max-w-[1440px] gap-2">
+      <ul className="mx-auto flex max-w-[1440px] gap-1 md:gap-2">
         {SECTIONS.map((s) => {
           const isActive = active === s.id;
           return (
@@ -43,7 +43,7 @@ export function AboutNav() {
               <a
                 href={`#${s.id}`}
                 className={
-                  'inline-flex rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-all ' +
+                  'inline-flex rounded-full px-2.5 py-1.5 text-[11px] font-medium whitespace-nowrap transition-all md:px-4 md:py-2 md:text-sm ' +
                   (isActive
                     ? 'bg-foreground text-background'
                     : 'border-border-theme text-muted-foreground hover:border-border-strong hover:text-foreground border')
