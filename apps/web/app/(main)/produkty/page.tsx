@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/common/breadcrumbs';
 import { PageHeader } from '@/components/common/page-header';
 import { Section } from '@/components/common/section';
+import { CategoryTabs } from '@/components/products/category-tabs';
 import { CtaButton } from '@/components/ui/cta-button';
 import { CATEGORIES_FALLBACK } from '@/lib/fallback';
 import { ROUTES } from '@/lib/routes';
@@ -56,37 +57,50 @@ export default async function ProductsPage({ searchParams }: Props) {
         </div>
       </Section>
       <Section padding="compact" className="!pt-6 !pb-[120px]">
-        <article className="bg-surface border-border-theme max-w-[900px] rounded-[20px] border p-6 md:p-8">
-          <h2
-            className="text-foreground m-0 font-bold tracking-[-0.02em]"
-            style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(22px, 5.5vw, 32px)',
-              lineHeight: 1.15,
-              wordBreak: 'break-word',
-            }}
-          >
-            {active.title}
-          </h2>
-          {active.subtitle && (
-            <div className="text-brand-theme mt-3 text-[15px] font-semibold">{active.subtitle}</div>
+        <div className="mx-auto max-w-[900px]">
+          <article className="bg-surface border-border-theme rounded-[20px] border p-6 md:p-8">
+            <h2
+              className="text-foreground m-0 font-bold tracking-[-0.02em]"
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: 'clamp(22px, 5.5vw, 32px)',
+                lineHeight: 1.15,
+                wordBreak: 'break-word',
+              }}
+            >
+              {active.title}
+            </h2>
+            {active.subtitle && (
+              <div className="text-brand-theme mt-3 text-[15px] font-semibold">
+                {active.subtitle}
+              </div>
+            )}
+            <div className="text-muted-foreground mt-6 flex flex-col gap-3 text-[16px] leading-[1.65]">
+              {active.description.map((line, i) => (
+                <p key={i} className="m-0">
+                  {line}
+                </p>
+              ))}
+            </div>
+            {!active.tabs && (
+              <div className="mt-8 flex flex-wrap gap-3">
+                <CtaButton href={ROUTES.contacts} size="lg">
+                  Отримати пропозицію
+                </CtaButton>
+                <CtaButton href="tel:+380800300500" variant="ghost" size="lg" icon={false}>
+                  0 800 300 500
+                </CtaButton>
+              </div>
+            )}
+          </article>
+
+          {/* ICECAT-380 — расширенный контент с табами (если есть) */}
+          {active.tabs && active.tabs.length > 0 && (
+            <div className="mt-10">
+              <CategoryTabs tabs={active.tabs} />
+            </div>
           )}
-          <div className="text-muted-foreground mt-6 flex flex-col gap-3 text-[16px] leading-[1.65]">
-            {active.description.map((line, i) => (
-              <p key={i} className="m-0">
-                {line}
-              </p>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <CtaButton href={ROUTES.contacts} size="lg">
-              Отримати пропозицію
-            </CtaButton>
-            <CtaButton href="tel:+380800300500" variant="ghost" size="lg" icon={false}>
-              0 800 300 500
-            </CtaButton>
-          </div>
-        </article>
+        </div>
       </Section>
     </>
   );

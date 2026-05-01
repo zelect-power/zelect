@@ -2,14 +2,20 @@
 // Используется, когда в Payload коллекции ещё пусты — чтобы сайт не показывал
 // пустые блоки до полноценного наполнения в Этапе 4.
 
+import { POWER_TABS } from '@/lib/products/power';
+import type { CategoryTab } from '@/lib/products/types';
+
 // ICECAT-369 — клиент убрал категории «ВРП» и «Кабельна продукція».
 // `description` — текст, отображаемый на /produkty при выборе категории.
-// Пока конкретные товары не заведены — показываем только описание.
+// `tabs` (опционально) — расширенный контент с табами и блоками. Если задан,
+// рендерится вместо простого description-блока. См. lib/products/types.ts.
+// ICECAT-380 — добавлен tabs для категории `power` из Zelect Content.pdf.
 export const CATEGORIES_FALLBACK: Array<{
   slug: string;
   title: string;
   subtitle?: string;
   description: string[];
+  tabs?: CategoryTab[];
 }> = [
   {
     slug: 'power',
@@ -22,6 +28,7 @@ export const CATEGORIES_FALLBACK: Array<{
       '• сухі трансформатори ТС',
       'Обладнання підбирається залежно від умов експлуатації, вимог безпеки та технічного завдання замовника.',
     ],
+    tabs: POWER_TABS,
   },
   {
     slug: 'distribution',
