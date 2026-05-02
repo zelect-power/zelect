@@ -25,11 +25,14 @@ export function HomeHero() {
           <h1
             className="text-foreground mt-5 font-bold md:mt-6"
             style={{
-              fontSize: 'clamp(34px, 7vw, 88px)',
-              lineHeight: 1.02,
+              // ICECAT-382 — снизил верхнюю границу clamp с 88→72px и vw c 7→5.5,
+              // чтобы «інфраструктуру» (14 знаков) помещалась в левой колонке
+              // на laptop (~1024px). Убрал wordBreak: break-word — он рвал слово
+              // посредине, когда font не помещался; теперь шрифт fit-by-design.
+              fontSize: 'clamp(32px, 5.5vw, 72px)',
+              lineHeight: 1.05,
               letterSpacing: '-0.03em',
               textWrap: 'balance',
-              wordBreak: 'break-word',
             }}
           >
             Енергія, що <GradText>тримає</GradText>
