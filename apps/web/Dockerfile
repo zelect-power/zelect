@@ -18,6 +18,14 @@ RUN npm ci --no-audit --no-fund
 # App sources + build
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+
+# NEXT_PUBLIC_* vars are inlined at build time. Declare as ARGs so Railway's
+# BuildKit passes them through.
+ARG NEXT_PUBLIC_SITE_URL=https://www.zelect.com.ua
+ARG NEXT_PUBLIC_GA_ID=
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID
+
 RUN npm run build
 
 ENV NODE_ENV=production \
