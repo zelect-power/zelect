@@ -7,6 +7,7 @@
     "dev": "next dev --port 3778 --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start --port 3778 --hostname 0.0.0.0",
+    "start:prod": "next start -p ${PORT:-3000} -H 0.0.0.0",
     "lint": "eslint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
