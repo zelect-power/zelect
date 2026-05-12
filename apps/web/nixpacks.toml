@@ -1,0 +1,15 @@
+# Override default Nixpacks build to avoid duplicate npm ci with conflicting
+# BuildKit cache mounts (causes EBUSY on /app/node_modules/.cache).
+# Single npm ci, then build.
+
+[phases.setup]
+nixPkgs = ['nodejs_20', 'npm-10_x']
+
+[phases.install]
+cmds = ['npm ci --no-audit --no-fund']
+
+[phases.build]
+cmds = ['npm run build']
+
+[start]
+cmd = 'npm run start:prod'
